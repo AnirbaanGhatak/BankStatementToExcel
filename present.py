@@ -11,9 +11,64 @@ import io
 
 load_dotenv()
 
-INPUT_FOLDER = "Z:\\PDF_input"
-OUTPUT_FOLDER = "Z:\\Excel_output"
+INPUT_FOLDER = r"\\pbserver\G\BankStatementConverter\PDF_Input"
+OUTPUT_FOLDER = r"\\pbserver\G\BankStatementConverter\Excel_Output"
 SLEEP_INTERVAL = 15 # Seconds to wait between checking the input folder
+
+def validate_and_annotate_balances(df):
+    """
+    Performs a row-by-row balance check, annotates the DataFrame with the results,
+    and flags if any discrepancies were found.
+
+    Args:
+        df (pd.DataFrame): The DataFrame extracted from the PDF.
+
+    Returns:
+        tuple: A tuple containing (pd.DataFrame, bool).
+               (annotated_df, True) if all balances are correct.
+               (annotated_df, False) if any discrepancy was found.
+    """
+    try:
+        # Create a copy to avoid modifying the original DataFrame in place
+        check_df = df.copy()
+
+        # Prepare the data
+        check_df['WithdrawalAmount'] = pd.to_numeric(check_df['WithdrawalAmount'], errors='coerce').fillna(0)
+        check_df['DepositAmount'] = pd.to_numeric(check_df['DepositAmount'], errors='coerce').fillna(0)
+        check_df['ClosingBalance'] = pd.to_numeric(check_df['ClosingBalance'], errors='coerce')
+
+        # Create the new validation column and initialize it
+        check_df['Validation Status'] = 'OK'
+        
+        # A flag to track if we find any errors at all
+
+        if check_df['ClosingBalance'].isnull().any():
+            check_df['Validation Status'] = 'Critical Error: Invalid Closing Balance value'
+            return check_df # Return True for errors to trigger notification
+
+        # Iterate and validate from the second row onwards
+        for i in range(1, len(check_df)):
+            previous_balance = check_df.loc[i-1, 'ClosingBalance']
+            withdrawal = check_df.loc[i, 'WithdrawalAmount']
+            deposit = check_df.loc[i, 'DepositAmount']
+            reported_balance = check_df.loc[i, 'ClosingBalance']
+            
+            calculated_balance = previous_balance - withdrawal + deposit
+            
+            # Calculate the difference
+            discrepancy = calculated_balance - reported_balance
+            
+            # If the discrepancy is larger than a small tolerance (e.g., 1 cent)
+            if abs(discrepancy) > 0.01:
+                # Annotate the current row with the specific error message
+                check_df.loc[i, 'Validation Status'] = f"Mismatch by {discrepancy:.2f}"
+
+        return check_df
+
+    except Exception as e:
+        # In case of a critical error during validation, create a dummy df to report it
+        error_df = pd.DataFrame([{'Validation Status': f'Critical Validation Error: {e}'}])
+        return error_df
 
 def pdf_processor(input_path, output_path):
     try: 
@@ -25,6 +80,7 @@ def pdf_processor(input_path, output_path):
         except Exception as e:
             print(e)
         print("hello")
+        print(f"{input_path}, {output_path}")
         prompt = """
             Extract all transactions from the provided financial document (statement or passbook) into a raw CSV string.
 
@@ -52,14 +108,23 @@ def pdf_processor(input_path, output_path):
 
         doc = io.StringIO(response.text)
 
-        df = pd.read_csv(doc, sep=',',engine='python')
+        col_names = [f"col_{i}" for i in range(10)]
+
+        df = pd.read_csv(doc, header=None,names=col_names, sep=",",engine="python")
+
+        df.columns = df.iloc[0, :len(df.columns)].fillna('Unnamed').tolist()
+        df = df.iloc[1:].reset_index(drop=True)
+
         print(df.tail(5))
 
-        df.to_excel(output_path,index=True)
+        validated_df = validate_and_annotate_balances(df)
+
+        validated_df.to_excel(output_path, index=False, engine='openpyxl')
 
         return "Success"
 
     except Exception as e:
+        print(f"--- An ERROR OCCURRED DURING PDF PROCESSING: {e} ---")
         return "ERROR"
 
 
@@ -87,9 +152,11 @@ def main():
 
             # Define the full path for the input file
             input_pdf_path = os.path.join(INPUT_FOLDER, filename)
-            output_pdf_path = os.path.join(OUTPUT_FOLDER, filename)
+            basename = pathlib.Path(filename).stem
+            output_filename = f"{basename}.xlsx"
+            output_pdf_path = os.path.join(OUTPUT_FOLDER, output_filename)
             
-            print(f"Starting Vertex AI processing for '{filename}'...")
+            print(f"Starting AI processing for '{filename}'...")
             result_path = pdf_processor(input_pdf_path, output_pdf_path)
             
             if "ERROR" in result_path:
