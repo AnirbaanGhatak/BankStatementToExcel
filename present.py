@@ -14,7 +14,9 @@ from PyPDF2 import PdfReader
 INPUT_FOLDER = r"\\pbserver\G\BankStatementConverter\PDF_Input"
 OUTPUT_FOLDER = r"\\pbserver\G\BankStatementConverter\Excel_Output"
 PROCESSED_FOLDER = r"\\pbserver\G\BankStatementConverter\Processed_pdfs"
+FINAL_DESTINATION_FOLDER = r"\\pbserver\G\BankStatementConverter\Rejected_files"
 SLEEP_INTERVAL = 15 # Seconds to wait between checking the input folder
+FILE_SIZE_LIMIT_BYTES = 7 * 1024 * 1024
 
 
 def get_pdf_page_count(file_path):
@@ -167,6 +169,31 @@ def pdf_processor(input_path, output_path):
     except Exception as e:
         print(f"--- An ERROR OCCURRED DURING PDF PROCESSING: {e} ---")
         return "ERROR"
+    
+
+def check_size(input_pdf_path, filename):
+    try:
+        file_size = os.path.getsize(input_pdf_path)
+        print(f"\nValidating file: '{filename}', Size: {file_size / (1024*1024):.2f} MB")
+
+        if file_size > FILE_SIZE_LIMIT_BYTES:
+            print(f"  REJECTED: File '{filename}' is too large ({file_size / (1024*1024):.2f} MB).")
+            
+            # Create a new name for the rejected file
+            base, ext = os.path.splitext(filename)
+            rejected_filename = f"{base}_REJECTED-FILE-TOO-LARGE{ext}"
+            rejected_path_final = os.path.join(FINAL_DESTINATION_FOLDER, rejected_filename)
+            
+            # Move the oversized file directly to the final destination
+            shutil.move(input_pdf_path, rejected_path_final)
+
+            return "rejected"
+        else:
+            return "continue"
+
+    except Exception as e:
+        print(f"file size error: {e}")
+
 
 
 def main():
@@ -193,25 +220,33 @@ def main():
 
             # Define the full path for the files
             input_pdf_path = os.path.join(INPUT_FOLDER, filename)
-            basename = pathlib.Path(filename).stem
-            output_filename = f"{basename}.xlsx"
-            process_filename = f"{basename}_processing.pdf"
-            output_pdf_path = os.path.join(OUTPUT_FOLDER, output_filename)
-            input_pdf_path_pr = os.path.join(INPUT_FOLDER, process_filename)
-            print(f"Starting AI processing for '{filename}'...")
-            os.rename(input_pdf_path, input_pdf_path_pr)
-            result_path = pdf_processor(input_pdf_path_pr, output_pdf_path)
-            
-            if "ERROR" in result_path:
+
+            pro = check_size(input_pdf_path, filename)
+
+            if "continue" == pro:
+                basename = pathlib.Path(filename).stem
+                output_filename = f"{basename}.xlsx"
+                process_filename = f"{basename}_processing.pdf"
+                output_pdf_path = os.path.join(OUTPUT_FOLDER, output_filename)
+                input_pdf_path_pr = os.path.join(INPUT_FOLDER, process_filename)
+                print(f"Starting AI processing for '{filename}'...")
+                os.rename(input_pdf_path, input_pdf_path_pr)
+
+                result_path = pdf_processor(input_pdf_path_pr, output_pdf_path)
+
+                if "ERROR" in result_path:
                 # If processing fails, the original PDF is left in the input folder
                 # for manual review or another attempt.
-                print("Error")
+                    print("Error")
                 # We should probably wait a bit longer after a failure to avoid rapid retries on a bad file.
-                time.sleep(30)
-            else:
-                shutil.move(input_pdf_path_pr, PROCESSED_FOLDER)
+                    time.sleep(30)
+                else:
+                    shutil.move(input_pdf_path_pr, PROCESSED_FOLDER)
 
-                print(f"SUCCESS: Created in the output folder and deleted the original PDF.")
+                    print(f"SUCCESS: Created in the output folder and moved the original PDF.")       
+            else:
+                print("Rejected due to size")
+           
 
         except Exception as e:
             print(f"--- A CRITICAL ERROR OCCURRED IN THE MAIN LOOP: {e} ---")
