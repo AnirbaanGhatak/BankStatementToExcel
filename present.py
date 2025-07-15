@@ -8,12 +8,31 @@ import httpx
 import pandas as pd
 from dotenv import load_dotenv
 import io
-
-load_dotenv()
+import shutil
+from PyPDF2 import PdfReader
 
 INPUT_FOLDER = r"\\pbserver\G\BankStatementConverter\PDF_Input"
 OUTPUT_FOLDER = r"\\pbserver\G\BankStatementConverter\Excel_Output"
+PROCESSED_FOLDER = r"\\pbserver\G\BankStatementConverter\Processed_pdfs"
 SLEEP_INTERVAL = 15 # Seconds to wait between checking the input folder
+
+
+def get_pdf_page_count(file_path):
+    """
+    Safely gets the number of pages in a PDF file.
+    Returns the page count, or 0 if the file is invalid or encrypted.
+    """
+    try:
+        with open(file_path, 'rb') as f:
+            reader = PdfReader(f)
+            # Check for encryption
+            if reader.is_encrypted:
+                print(f"--- WARNING: File '{os.path.basename(file_path)}' is encrypted and cannot be read. ---")
+                return 0
+            return len(reader.pages)
+    except Exception as e:
+        print(f"--- ERROR: Could not read PDF file '{os.path.basename(file_path)}'. Error: {e} ---")
+        return 0
 
 def validate_and_annotate_balances(df):
     """
@@ -71,14 +90,28 @@ def validate_and_annotate_balances(df):
         return error_df
 
 def pdf_processor(input_path, output_path):
+
+    models_gen = ["gemini-2.5-flash-preview-04-17","gemini-2.5-flash", "gemini-2.5-flash-lite-preview-06-17"]
+    current_idx = 0
+    try:
+        cnt = get_pdf_page_count(input_path)
+        if cnt >=6:
+            current_idx = 0
+        elif cnt <= 5:
+            current_idx = 2
+
+    except Exception as e:
+        print(f"--- ERROR: {e} while geting PDF page count ---")
+        return "ERROR"
+
     try: 
-        print("hi")
-        client = genai.Client(api_key="AIzaSyDWbdS65v-QmV5E7jax_kV5Mq-3STC1pIU")
+        # print(f"{API_KEY}")
+        client = genai.Client()
         print("ko")
         try: 
             myfile = client.files.upload(file=input_path)
         except Exception as e:
-            print(e)
+            print(f"files ERROR: {e}")
         print("hello")
         print(f"{input_path}, {output_path}")
         prompt = """
@@ -100,9 +133,17 @@ def pdf_processor(input_path, output_path):
             - No explanations, summaries, or markdown ` ``` `.
             - Start directly with the header row.
             """
-        response = client.models.generate_content(
-        model="gemini-2.5-flash-preview-04-17",
-        contents=[prompt, myfile])
+
+        try:
+            response = client.models.generate_content(
+                model=models_gen[current_idx],   
+                contents=[prompt, myfile]
+            )
+        except Exception as e:
+            if "402" in str(e):
+                current_idx += 1
+                if current_idx > 2:
+                    current_idx = 0
 
         client.files.delete(name=myfile.name)
 
@@ -150,14 +191,16 @@ def main():
             filename = pending_files[0]
             print(f"\nFound new file to process: {filename}")
 
-            # Define the full path for the input file
+            # Define the full path for the files
             input_pdf_path = os.path.join(INPUT_FOLDER, filename)
             basename = pathlib.Path(filename).stem
             output_filename = f"{basename}.xlsx"
+            process_filename = f"{basename}_processing.pdf"
             output_pdf_path = os.path.join(OUTPUT_FOLDER, output_filename)
-            
+            input_pdf_path_pr = os.path.join(INPUT_FOLDER, process_filename)
             print(f"Starting AI processing for '{filename}'...")
-            result_path = pdf_processor(input_pdf_path, output_pdf_path)
+            os.rename(input_pdf_path, input_pdf_path_pr)
+            result_path = pdf_processor(input_pdf_path_pr, output_pdf_path)
             
             if "ERROR" in result_path:
                 # If processing fails, the original PDF is left in the input folder
@@ -166,8 +209,8 @@ def main():
                 # We should probably wait a bit longer after a failure to avoid rapid retries on a bad file.
                 time.sleep(30)
             else:
-                os.remove(input_pdf_path)
-                
+                shutil.move(input_pdf_path_pr, PROCESSED_FOLDER)
+
                 print(f"SUCCESS: Created in the output folder and deleted the original PDF.")
 
         except Exception as e:
@@ -175,4 +218,5 @@ def main():
             time.sleep(60)
 
 if __name__ == '__main__':
+    load_dotenv()
     main()
