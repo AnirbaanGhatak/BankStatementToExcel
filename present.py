@@ -93,28 +93,27 @@ def validate_and_annotate_balances(df):
 
 def pdf_processor(input_path, output_path):
 
-    models_gen = ["gemini-2.5-flash-preview-04-17","gemini-2.5-flash", "gemini-2.5-flash-lite-preview-06-17"]
+    models_gen = ["gemini-2.5-flash", "gemini-2.5-flash-lite-preview-06-17"]
     current_idx = 0
     try:
         cnt = get_pdf_page_count(input_path)
         if cnt >=6:
             current_idx = 0
         elif cnt <= 5:
-            current_idx = 2
+            current_idx = 1
 
     except Exception as e:
         print(f"--- ERROR: {e} while geting PDF page count ---")
         return "ERROR"
 
     try: 
-        # print(f"{API_KEY}")
         client = genai.Client()
-        print("ko")
+        print("connected to AI")
         try: 
             myfile = client.files.upload(file=input_path)
         except Exception as e:
             print(f"files ERROR: {e}")
-        print("hello")
+        print("File Uploaded")
         print(f"{input_path}, {output_path}")
         prompt = """
             Extract all transactions from the provided financial document (statement or passbook) into a raw CSV string.
@@ -138,14 +137,17 @@ def pdf_processor(input_path, output_path):
 
         try:
             response = client.models.generate_content(
-                model=models_gen[current_idx],   
-                contents=[prompt, myfile]
+                model= models_gen[current_idx],   
+                contents=[prompt, myfile],
+                config=types.GenerateContentConfig(
+                    temperature= 0.8,
+                    thinking_config=types.ThinkingConfig(thinking_budget=50)
+                )
             )
         except Exception as e:
-            if "402" in str(e):
-                current_idx += 1
-                if current_idx > 2:
-                    current_idx = 0
+            print(e)
+            if '429' or '404' in str(e):
+                current_idx = 1 if current_idx == 0 else 0
 
         client.files.delete(name=myfile.name)
 
