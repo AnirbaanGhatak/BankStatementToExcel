@@ -1,0 +1,976 @@
+2025-07-22 15:57:07,797 - INFO - --- Automated PDF Processor Worker Started ---
+2025-07-22 15:57:08,457 - INFO - Status updated: Idle - 
+2025-07-22 15:57:08,459 - INFO - 
+Found new file: Bank statement_compressed-1-24.pdf. Moving to process.
+2025-07-22 15:57:08,461 - INFO - Status updated: Processing - Bank statement_compressed-1-24.pdf
+2025-07-22 15:57:09,133 - INFO - [AI Processor] Starting processing for: Bank statement_compressed-1-24.pdf
+2025-07-22 15:57:09,433 - INFO - [AI Processor] Selected model 'gemini-2.5-flash' for 24 pages.
+2025-07-22 15:57:10,155 - INFO - [AI Processor] Authenticated with Gemini API.
+2025-07-22 15:57:15,990 - INFO - [AI Processor] File 'files/0w74zb7ph5yq' uploaded.
+2025-07-22 15:58:50,652 - INFO - --- Automated PDF Processor Worker Started ---
+2025-07-22 15:58:50,656 - INFO - Status updated: Idle - 
+2025-07-22 15:58:50,878 - INFO - 
+Found new file: Bank statement_compressed-25-51.pdf. Moving to process.
+2025-07-22 15:58:50,880 - INFO - Status updated: Processing - Bank statement_compressed-25-51.pdf
+2025-07-22 15:58:52,013 - INFO - [AI Processor] Starting processing for: Bank statement_compressed-25-51.pdf
+2025-07-22 15:58:52,565 - INFO - [AI Processor] Selected model 'gemini-2.5-flash' for 27 pages.
+2025-07-22 15:58:53,496 - INFO - [AI Processor] Authenticated with Gemini API.
+2025-07-22 15:58:58,748 - INFO - [AI Processor] File 'files/voddpf1jdv6k' uploaded.
+2025-07-22 16:01:28,791 - INFO - [AI Processor] Deleted uploaded file 'files/voddpf1jdv6k'.
+2025-07-22 16:01:28,812 - INFO - [AI Processor] Parsed response into a DataFrame with 1988 rows.
+2025-07-22 16:01:28,812 - ERROR - Critical Error: Missing expected column -> 'WithdrawalAmount'
+2025-07-22 16:01:28,813 - INFO - [AI Processor] Balance validation complete.
+2025-07-22 16:01:29,601 - INFO - [AI Processor] Successfully created Excel file at: \\pbserver\G\BankStatementConverter\Excel_Output\Bank statement_compressed-25-51.xlsx
+2025-07-22 16:01:29,605 - INFO - SUCCESS: Processing complete for 'Bank statement_compressed-25-51.pdf'.
+2025-07-22 16:01:29,626 - INFO - Status updated: Idle - 
+2025-07-22 16:01:29,629 - INFO - Status updated: Idle - 
+2025-07-22 16:01:44,630 - INFO - Status updated: Idle - 
+2025-07-22 16:01:44,632 - INFO - Status updated: Idle - 
+2025-07-22 16:01:59,634 - INFO - Status updated: Idle - 
+2025-07-22 16:01:59,638 - INFO - Status updated: Idle - 
+2025-07-22 16:02:14,640 - INFO - Status updated: Idle - 
+2025-07-22 16:02:14,645 - INFO - Status updated: Idle - 
+2025-07-22 16:02:29,646 - INFO - Status updated: Idle - 
+2025-07-22 16:02:29,652 - INFO - Status updated: Idle - 
+2025-07-22 16:02:44,654 - INFO - Status updated: Idle - 
+2025-07-22 16:02:44,656 - INFO - Status updated: Idle - 
+2025-07-22 16:02:59,689 - INFO - Status updated: Idle - 
+2025-07-22 16:02:59,691 - INFO - Status updated: Idle - 
+2025-07-22 16:03:14,693 - INFO - Status updated: Idle - 
+2025-07-22 16:03:14,695 - INFO - Status updated: Idle - 
+2025-07-22 16:03:29,697 - INFO - Status updated: Idle - 
+2025-07-22 16:03:29,699 - INFO - Status updated: Idle - 
+2025-07-22 16:03:44,701 - INFO - Status updated: Idle - 
+2025-07-22 16:03:44,704 - INFO - Status updated: Idle - 
+2025-07-22 16:03:59,706 - INFO - Status updated: Idle - 
+2025-07-22 16:03:59,708 - INFO - Status updated: Idle - 
+2025-07-22 16:04:14,710 - INFO - Status updated: Idle - 
+2025-07-22 16:04:14,711 - INFO - Status updated: Idle - 
+2025-07-22 16:04:29,714 - INFO - Status updated: Idle - 
+2025-07-22 16:04:29,720 - INFO - Status updated: Idle - 
+2025-07-22 16:04:44,722 - INFO - Status updated: Idle - 
+2025-07-22 16:04:44,724 - INFO - Status updated: Idle - 
+2025-07-22 16:04:59,726 - INFO - Status updated: Idle - 
+2025-07-22 16:04:59,727 - INFO - Status updated: Idle - 
+2025-07-22 16:05:14,728 - INFO - Status updated: Idle - 
+2025-07-22 16:05:14,731 - INFO - Status updated: Idle - 
+2025-07-22 16:05:29,733 - INFO - Status updated: Idle - 
+2025-07-22 16:05:29,736 - INFO - Status updated: Idle - 
+2025-07-22 16:05:44,738 - INFO - Status updated: Idle - 
+2025-07-22 16:05:44,743 - INFO - Status updated: Idle - 
+2025-07-22 16:05:59,744 - INFO - Status updated: Idle - 
+2025-07-22 16:05:59,747 - INFO - Status updated: Idle - 
+2025-07-22 16:06:14,749 - INFO - Status updated: Idle - 
+2025-07-22 16:06:14,755 - INFO - Status updated: Idle - 
+2025-07-22 16:06:29,756 - INFO - Status updated: Idle - 
+2025-07-22 16:06:29,761 - INFO - Status updated: Idle - 
+2025-07-22 16:06:44,763 - INFO - Status updated: Idle - 
+2025-07-22 16:06:44,768 - INFO - Status updated: Idle - 
+2025-07-22 16:06:59,770 - INFO - Status updated: Idle - 
+2025-07-22 16:06:59,771 - INFO - Status updated: Idle - 
+2025-07-22 16:07:14,774 - INFO - Status updated: Idle - 
+2025-07-22 16:07:14,776 - INFO - Status updated: Idle - 
+2025-07-22 16:07:29,778 - INFO - Status updated: Idle - 
+2025-07-22 16:07:29,782 - INFO - Status updated: Idle - 
+2025-07-22 16:07:44,785 - INFO - Status updated: Idle - 
+2025-07-22 16:07:44,790 - INFO - Status updated: Idle - 
+2025-07-22 16:07:59,792 - INFO - Status updated: Idle - 
+2025-07-22 16:07:59,795 - INFO - Status updated: Idle - 
+2025-07-22 16:08:14,797 - INFO - Status updated: Idle - 
+2025-07-22 16:08:14,799 - INFO - Status updated: Idle - 
+2025-07-22 16:08:29,801 - INFO - Status updated: Idle - 
+2025-07-22 16:08:29,803 - INFO - Status updated: Idle - 
+2025-07-22 16:08:44,805 - INFO - Status updated: Idle - 
+2025-07-22 16:08:44,807 - INFO - Status updated: Idle - 
+2025-07-22 16:08:55,271 - INFO - Status updated: Idle - 
+2025-07-22 16:12:11,522 - INFO - --- Automated PDF Processor Worker Started ---
+2025-07-22 16:12:11,543 - INFO - Status updated: Idle - 
+2025-07-22 16:12:11,550 - INFO - 
+Found new file: Bank statement_compressed-1-24_KD.pdf. Moving to process.
+2025-07-22 16:12:11,551 - INFO - Status updated: Processing - Bank statement_compressed-1-24_KD.pdf
+2025-07-22 16:12:11,572 - INFO - [AI Processor] Starting processing for: Bank statement_compressed-1-24_KD.pdf
+2025-07-22 16:12:11,586 - INFO - [AI Processor] Selected model 'gemini-2.5-flash' for 24 pages.
+2025-07-22 16:12:12,226 - INFO - [AI Processor] Authenticated with Gemini API.
+2025-07-22 16:12:16,185 - INFO - [AI Processor] File 'files/lnhrjcef1hji' uploaded.
+2025-07-22 16:16:43,426 - INFO - [AI Processor] Deleted uploaded file 'files/lnhrjcef1hji'.
+2025-07-22 16:16:43,430 - ERROR - Processing failed for 'Bank statement_compressed-1-24_KD.pdf'. Moving back to input queue. Details: ERROR: Model returned an empty response.
+2025-07-22 16:16:43,433 - WARNING - Moving failed file 'Bank statement_compressed-1-24_KD.pdf' back to input queue.
+2025-07-22 16:16:43,459 - INFO - Status updated: Idle - 
+2025-07-22 16:16:43,466 - INFO - 
+Found new file: Bank statement_compressed-1-24_KD.pdf. Moving to process.
+2025-07-22 16:16:43,468 - INFO - Status updated: Processing - Bank statement_compressed-1-24_KD.pdf
+2025-07-22 16:16:43,491 - INFO - [AI Processor] Starting processing for: Bank statement_compressed-1-24_KD.pdf
+2025-07-22 16:16:43,514 - INFO - [AI Processor] Selected model 'gemini-2.5-flash' for 24 pages.
+2025-07-22 16:16:44,140 - INFO - [AI Processor] Authenticated with Gemini API.
+2025-07-22 16:16:48,088 - INFO - [AI Processor] File 'files/34hkwmtz21ui' uploaded.
+2025-07-24 11:44:51,277 - INFO - --- Automated PDF Processor Worker Started ---
+2025-07-24 11:44:51,306 - INFO - Status updated: Idle - 
+2025-07-24 11:44:51,310 - INFO - Status updated: Idle - 
+2025-07-24 11:45:06,311 - INFO - Status updated: Idle - 
+2025-07-24 11:45:06,324 - INFO - Status updated: Idle - 
+2025-07-24 11:45:21,326 - INFO - Status updated: Idle - 
+2025-07-24 11:45:21,331 - INFO - Status updated: Idle - 
+2025-07-24 11:45:36,332 - INFO - Status updated: Idle - 
+2025-07-24 11:45:36,335 - INFO - Status updated: Idle - 
+2025-07-24 11:45:51,337 - INFO - Status updated: Idle - 
+2025-07-24 11:45:51,340 - INFO - Status updated: Idle - 
+2025-07-24 11:46:06,341 - INFO - Status updated: Idle - 
+2025-07-24 11:46:06,344 - INFO - 
+Found new file: Bank statement_compressed-1-24_KD.pdf. Moving to process.
+2025-07-24 11:46:06,345 - INFO - Status updated: Processing - Bank statement_compressed-1-24_KD.pdf
+2025-07-24 11:46:06,438 - INFO - [AI Processor] Starting processing for: Bank statement_compressed-1-24_KD.pdf
+2025-07-24 11:46:06,486 - INFO - [AI Processor] Selected model 'gemini-2.5-flash' for 24 pages.
+2025-07-24 11:46:07,246 - INFO - [AI Processor] Authenticated with Gemini API.
+2025-07-24 11:46:10,290 - INFO - [AI Processor] File 'files/ry6swagb7s9x' uploaded.
+2025-07-24 11:50:52,191 - INFO - [AI Processor] Deleted uploaded file 'files/ry6swagb7s9x'.
+2025-07-24 11:50:52,210 - INFO - [AI Processor] Parsed response into a DataFrame with 182 rows.
+2025-07-24 11:50:52,210 - INFO - <bound method NDFrame.tail of          Date                                           ChequeNo  ... DepositAmount  ClosingBalance
+0    02/09/24                                                NaN  ...          0.00       892655.43
+1    02/09/24                                                NaN  ...          0.00       892650.12
+2    03/09/24                                                NaN  ...          0.00       872394.12
+3    03/09/24                                                NaN  ...      26354.00       898748.12
+4    04/09/24                                                NaN  ...          0.00       795748.12
+..        ...                                                ...  ...           ...             ...
+177  24/06/24                                                NaN  ...      30000.00       941555.38
+178  24/06/24                                                NaN  ...          0.00       906555.38
+179  26/06/24  TRAN DATE -(MMDD) 0626 TRAN ATM WDL SEQ NO 12 ...  ...     891555.38             NaN
+180  26/06/24  Txn Amt. 10,000.00 Ch NEFT/DCBLWIDIBH241784494...  ...     881555.38             NaN
+181  30/06/24                                                NaN  ...       6021.00            8.00
+
+[182 rows x 7 columns]>
+2025-07-24 11:50:52,289 - INFO - [AI Processor] Balance validation complete.
+2025-07-24 11:50:52,290 - INFO - <bound method NDFrame.tail of          Date                                           ChequeNo  ... DepositAmount  ClosingBalance
+0    02/09/24                                                NaN  ...          0.00       892655.43
+1    02/09/24                                                NaN  ...          0.00       892650.12
+2    03/09/24                                                NaN  ...          0.00       872394.12
+3    03/09/24                                                NaN  ...      26354.00       898748.12
+4    04/09/24                                                NaN  ...          0.00       795748.12
+..        ...                                                ...  ...           ...             ...
+177  24/06/24                                                NaN  ...      30000.00       941555.38
+178  24/06/24                                                NaN  ...          0.00       906555.38
+179  26/06/24  TRAN DATE -(MMDD) 0626 TRAN ATM WDL SEQ NO 12 ...  ...     891555.38             NaN
+180  26/06/24  Txn Amt. 10,000.00 Ch NEFT/DCBLWIDIBH241784494...  ...     881555.38             NaN
+181  30/06/24                                                NaN  ...       6021.00            8.00
+
+[182 rows x 7 columns]>
+2025-07-24 11:50:52,711 - INFO - [AI Processor] Successfully created Excel file at: \\pbserver\G\BankStatementConverter\Excel_Output\Bank statement_compressed-1-24_KD.xlsx
+2025-07-24 11:50:52,717 - INFO - SUCCESS: Processing complete for 'Bank statement_compressed-1-24_KD.pdf'.
+2025-07-24 11:50:52,734 - INFO - Status updated: Idle - 
+2025-07-24 11:50:52,738 - INFO - 
+Found new file: Bank statement_compressed-25-51_KD.pdf. Moving to process.
+2025-07-24 11:50:52,739 - INFO - Status updated: Processing - Bank statement_compressed-25-51_KD.pdf
+2025-07-24 11:50:52,756 - INFO - [AI Processor] Starting processing for: Bank statement_compressed-25-51_KD.pdf
+2025-07-24 11:50:52,768 - INFO - [AI Processor] Selected model 'gemini-2.5-flash' for 27 pages.
+2025-07-24 11:50:53,377 - INFO - [AI Processor] Authenticated with Gemini API.
+2025-07-24 11:50:56,401 - INFO - [AI Processor] File 'files/9d7woidzh5wr' uploaded.
+2025-07-24 11:55:53,414 - INFO - [AI Processor] Deleted uploaded file 'files/9d7woidzh5wr'.
+2025-07-24 11:55:53,417 - ERROR - Processing failed for 'Bank statement_compressed-25-51_KD.pdf'. Moving back to input queue. Details: ERROR: Model returned an empty response.
+2025-07-24 11:55:53,420 - WARNING - Moving failed file 'Bank statement_compressed-25-51_KD.pdf' back to input queue.
+2025-07-24 11:55:53,444 - INFO - Status updated: Idle - 
+2025-07-24 11:55:53,450 - INFO - 
+Found new file: Bank statement_compressed-25-51_KD.pdf. Moving to process.
+2025-07-24 11:55:53,451 - INFO - Status updated: Processing - Bank statement_compressed-25-51_KD.pdf
+2025-07-24 11:55:53,472 - INFO - [AI Processor] Starting processing for: Bank statement_compressed-25-51_KD.pdf
+2025-07-24 11:55:53,489 - INFO - [AI Processor] Selected model 'gemini-2.5-flash' for 27 pages.
+2025-07-24 11:55:54,101 - INFO - [AI Processor] Authenticated with Gemini API.
+2025-07-24 11:55:57,693 - INFO - [AI Processor] File 'files/kmqnkouvjpos' uploaded.
+2025-07-24 12:00:15,969 - INFO - [AI Processor] Deleted uploaded file 'files/kmqnkouvjpos'.
+2025-07-24 12:00:15,977 - INFO - [AI Processor] Parsed response into a DataFrame with 438 rows.
+2025-07-24 12:00:15,977 - INFO - <bound method NDFrame.tail of            Date                                           ChequeNo  ... DepositAmount  ClosingBalance
+0      30/07/24                                                NaN  ...          0.00       808011.38
+1      30/07/24                                                NaN  ...          0.00       807893.38
+2      30/07/24  HDFC0003784/PRASHANT CHAUDHAR UPI/421217540145...  ...     827893.38             NaN
+3      31/07/24  Txn Amt. 20,000.00 Ch NEFT/DCBL/IDIBH242131587...  ...     807893.38             NaN
+4      31/07/24  UBIN0556530/SHILPA AMIT MAHAJ UPI/457951402637...  ...     822893.38             NaN
+..          ...                                                ...  ...           ...             ...
+433  23-03-2025                                                NaN  ...       2647.00        12679.73
+434  24-03-2025                                                NaN  ...          0.00         9679.73
+435  28-03-2025                                                NaN  ...          0.00         6350.73
+436  29-03-2025                                                NaN  ...          0.00         5818.55
+437  31-03-2025                                                NaN  ...         64.00         5882.55
+
+[438 rows x 7 columns]>
+2025-07-24 12:00:16,047 - INFO - [AI Processor] Balance validation complete.
+2025-07-24 12:00:16,047 - INFO - <bound method NDFrame.tail of            Date                                           ChequeNo  ... DepositAmount  ClosingBalance
+0      30/07/24                                                NaN  ...          0.00       808011.38
+1      30/07/24                                                NaN  ...          0.00       807893.38
+2      30/07/24  HDFC0003784/PRASHANT CHAUDHAR UPI/421217540145...  ...     827893.38             NaN
+3      31/07/24  Txn Amt. 20,000.00 Ch NEFT/DCBL/IDIBH242131587...  ...     807893.38             NaN
+4      31/07/24  UBIN0556530/SHILPA AMIT MAHAJ UPI/457951402637...  ...     822893.38             NaN
+..          ...                                                ...  ...           ...             ...
+433  23-03-2025                                                NaN  ...       2647.00        12679.73
+434  24-03-2025                                                NaN  ...          0.00         9679.73
+435  28-03-2025                                                NaN  ...          0.00         6350.73
+436  29-03-2025                                                NaN  ...          0.00         5818.55
+437  31-03-2025                                                NaN  ...         64.00         5882.55
+
+[438 rows x 7 columns]>
+2025-07-24 12:00:16,232 - INFO - [AI Processor] Successfully created Excel file at: \\pbserver\G\BankStatementConverter\Excel_Output\Bank statement_compressed-25-51_KD.xlsx
+2025-07-24 12:00:16,235 - INFO - SUCCESS: Processing complete for 'Bank statement_compressed-25-51_KD.pdf'.
+2025-07-24 12:00:16,253 - INFO - Status updated: Idle - 
+2025-07-24 12:00:16,256 - INFO - Status updated: Idle - 
+2025-07-24 12:00:31,258 - INFO - Status updated: Idle - 
+2025-07-24 12:00:31,262 - INFO - Status updated: Idle - 
+2025-07-24 12:00:46,264 - INFO - Status updated: Idle - 
+2025-07-24 12:00:46,268 - INFO - Status updated: Idle - 
+2025-07-24 12:01:01,271 - INFO - Status updated: Idle - 
+2025-07-24 12:01:01,275 - INFO - Status updated: Idle - 
+2025-07-24 12:01:16,277 - INFO - Status updated: Idle - 
+2025-07-24 12:01:16,281 - INFO - Status updated: Idle - 
+2025-07-24 12:01:31,283 - INFO - Status updated: Idle - 
+2025-07-24 12:01:31,287 - INFO - Status updated: Idle - 
+2025-07-24 12:01:46,290 - INFO - Status updated: Idle - 
+2025-07-24 12:01:46,294 - INFO - Status updated: Idle - 
+2025-07-24 12:02:01,296 - INFO - Status updated: Idle - 
+2025-07-24 12:02:01,301 - INFO - Status updated: Idle - 
+2025-07-24 12:02:16,303 - INFO - Status updated: Idle - 
+2025-07-24 12:02:16,307 - INFO - Status updated: Idle - 
+2025-07-24 12:02:31,310 - INFO - Status updated: Idle - 
+2025-07-24 12:02:31,314 - INFO - Status updated: Idle - 
+2025-07-24 12:02:46,316 - INFO - Status updated: Idle - 
+2025-07-24 12:02:46,320 - INFO - Status updated: Idle - 
+2025-07-24 12:03:01,322 - INFO - Status updated: Idle - 
+2025-07-24 12:03:01,327 - INFO - Status updated: Idle - 
+2025-07-24 12:03:16,329 - INFO - Status updated: Idle - 
+2025-07-24 12:03:16,334 - INFO - Status updated: Idle - 
+2025-07-24 12:03:31,335 - INFO - Status updated: Idle - 
+2025-07-24 12:03:31,338 - INFO - Status updated: Idle - 
+2025-07-24 12:03:46,340 - INFO - Status updated: Idle - 
+2025-07-24 12:03:46,344 - INFO - Status updated: Idle - 
+2025-07-24 12:04:01,346 - INFO - Status updated: Idle - 
+2025-07-24 12:04:01,351 - INFO - Status updated: Idle - 
+2025-07-24 12:04:16,354 - INFO - Status updated: Idle - 
+2025-07-24 12:04:16,358 - INFO - Status updated: Idle - 
+2025-07-24 12:04:31,360 - INFO - Status updated: Idle - 
+2025-07-24 12:04:31,361 - INFO - Status updated: Idle - 
+2025-07-24 12:04:46,363 - INFO - Status updated: Idle - 
+2025-07-24 12:04:46,368 - INFO - Status updated: Idle - 
+2025-07-24 12:05:01,370 - INFO - Status updated: Idle - 
+2025-07-24 12:05:01,374 - INFO - Status updated: Idle - 
+2025-07-24 12:05:16,377 - INFO - Status updated: Idle - 
+2025-07-24 12:05:16,383 - INFO - Status updated: Idle - 
+2025-07-24 12:05:31,385 - INFO - Status updated: Idle - 
+2025-07-24 12:05:31,390 - INFO - Status updated: Idle - 
+2025-07-24 12:05:46,392 - INFO - Status updated: Idle - 
+2025-07-24 12:05:46,396 - INFO - Status updated: Idle - 
+2025-07-24 12:06:03,167 - INFO - Status updated: Idle - 
+2025-07-24 12:06:03,174 - INFO - Status updated: Idle - 
+2025-07-24 12:06:18,176 - INFO - Status updated: Idle - 
+2025-07-24 12:06:18,179 - INFO - Status updated: Idle - 
+2025-07-24 12:06:33,180 - INFO - Status updated: Idle - 
+2025-07-24 12:06:33,184 - INFO - Status updated: Idle - 
+2025-07-24 12:06:48,186 - INFO - Status updated: Idle - 
+2025-07-24 12:06:48,189 - INFO - Status updated: Idle - 
+2025-07-24 12:07:03,219 - INFO - Status updated: Idle - 
+2025-07-24 12:07:03,224 - INFO - Status updated: Idle - 
+2025-07-24 12:07:18,256 - INFO - Status updated: Idle - 
+2025-07-24 12:07:18,261 - INFO - Status updated: Idle - 
+2025-07-24 12:07:33,269 - INFO - Status updated: Idle - 
+2025-07-24 12:07:33,275 - INFO - Status updated: Idle - 
+2025-07-24 12:07:48,277 - INFO - Status updated: Idle - 
+2025-07-24 12:07:48,280 - INFO - Status updated: Idle - 
+2025-07-24 12:08:03,282 - INFO - Status updated: Idle - 
+2025-07-24 12:08:03,286 - INFO - Status updated: Idle - 
+2025-07-24 12:08:18,347 - INFO - Status updated: Idle - 
+2025-07-24 12:08:18,350 - INFO - Status updated: Idle - 
+2025-07-24 12:08:33,352 - INFO - Status updated: Idle - 
+2025-07-24 12:08:33,356 - INFO - Status updated: Idle - 
+2025-07-24 12:08:48,359 - INFO - Status updated: Idle - 
+2025-07-24 12:08:48,362 - INFO - Status updated: Idle - 
+2025-07-24 12:09:03,367 - INFO - Status updated: Idle - 
+2025-07-24 12:09:03,371 - INFO - Status updated: Idle - 
+2025-07-24 12:09:18,374 - INFO - Status updated: Idle - 
+2025-07-24 12:09:18,379 - INFO - Status updated: Idle - 
+2025-07-24 12:09:33,381 - INFO - Status updated: Idle - 
+2025-07-24 12:09:33,384 - INFO - Status updated: Idle - 
+2025-07-24 12:09:48,386 - INFO - Status updated: Idle - 
+2025-07-24 12:09:48,390 - INFO - Status updated: Idle - 
+2025-07-24 12:10:03,392 - INFO - Status updated: Idle - 
+2025-07-24 12:10:03,398 - INFO - Status updated: Idle - 
+2025-07-24 12:10:18,400 - INFO - Status updated: Idle - 
+2025-07-24 12:10:18,404 - INFO - Status updated: Idle - 
+2025-07-24 12:10:33,409 - INFO - Status updated: Idle - 
+2025-07-24 12:10:33,412 - INFO - Status updated: Idle - 
+2025-07-24 12:10:48,415 - INFO - Status updated: Idle - 
+2025-07-24 12:10:48,419 - INFO - Status updated: Idle - 
+2025-07-24 12:11:03,421 - INFO - Status updated: Idle - 
+2025-07-24 12:11:03,425 - INFO - Status updated: Idle - 
+2025-07-24 12:11:18,427 - INFO - Status updated: Idle - 
+2025-07-24 12:11:18,432 - INFO - Status updated: Idle - 
+2025-07-24 12:11:33,434 - INFO - Status updated: Idle - 
+2025-07-24 12:11:33,443 - INFO - Status updated: Idle - 
+2025-07-24 12:11:48,445 - INFO - Status updated: Idle - 
+2025-07-24 12:11:48,448 - INFO - Status updated: Idle - 
+2025-07-24 12:12:03,450 - INFO - Status updated: Idle - 
+2025-07-24 12:12:03,455 - INFO - Status updated: Idle - 
+2025-07-24 12:12:18,456 - INFO - Status updated: Idle - 
+2025-07-24 12:12:18,460 - INFO - Status updated: Idle - 
+2025-07-24 12:12:33,462 - INFO - Status updated: Idle - 
+2025-07-24 12:12:33,466 - INFO - Status updated: Idle - 
+2025-07-24 12:12:48,468 - INFO - Status updated: Idle - 
+2025-07-24 12:12:48,471 - INFO - Status updated: Idle - 
+2025-07-24 12:13:03,473 - INFO - Status updated: Idle - 
+2025-07-24 12:13:03,476 - INFO - Status updated: Idle - 
+2025-07-24 12:13:18,510 - INFO - Status updated: Idle - 
+2025-07-24 12:13:18,515 - INFO - Status updated: Idle - 
+2025-07-24 12:13:33,519 - INFO - Status updated: Idle - 
+2025-07-24 12:13:33,526 - INFO - Status updated: Idle - 
+2025-07-24 12:13:48,529 - INFO - Status updated: Idle - 
+2025-07-24 12:13:48,534 - INFO - Status updated: Idle - 
+2025-07-24 12:14:03,538 - INFO - Status updated: Idle - 
+2025-07-24 12:14:03,543 - INFO - Status updated: Idle - 
+2025-07-24 12:14:18,545 - INFO - Status updated: Idle - 
+2025-07-24 12:14:18,549 - INFO - Status updated: Idle - 
+2025-07-24 12:14:33,552 - INFO - Status updated: Idle - 
+2025-07-24 12:14:33,553 - INFO - Status updated: Idle - 
+2025-07-24 12:14:48,556 - INFO - Status updated: Idle - 
+2025-07-24 12:14:48,559 - INFO - Status updated: Idle - 
+2025-07-24 12:15:03,560 - INFO - Status updated: Idle - 
+2025-07-24 12:15:03,562 - INFO - Status updated: Idle - 
+2025-07-24 12:15:18,564 - INFO - Status updated: Idle - 
+2025-07-24 12:15:18,573 - INFO - Status updated: Idle - 
+2025-07-24 12:15:33,575 - INFO - Status updated: Idle - 
+2025-07-24 12:15:33,578 - INFO - Status updated: Idle - 
+2025-07-24 12:15:48,580 - INFO - Status updated: Idle - 
+2025-07-24 12:15:48,581 - INFO - Status updated: Idle - 
+2025-07-24 12:16:03,585 - INFO - Status updated: Idle - 
+2025-07-24 12:16:03,587 - INFO - Status updated: Idle - 
+2025-07-24 12:16:18,625 - INFO - Status updated: Idle - 
+2025-07-24 12:16:18,627 - INFO - Status updated: Idle - 
+2025-07-24 12:16:33,629 - INFO - Status updated: Idle - 
+2025-07-24 12:16:33,631 - INFO - Status updated: Idle - 
+2025-07-24 12:16:48,633 - INFO - Status updated: Idle - 
+2025-07-24 12:16:48,636 - INFO - Status updated: Idle - 
+2025-07-24 12:17:03,638 - INFO - Status updated: Idle - 
+2025-07-24 12:17:03,640 - INFO - Status updated: Idle - 
+2025-07-24 12:17:18,642 - INFO - Status updated: Idle - 
+2025-07-24 12:17:18,645 - INFO - Status updated: Idle - 
+2025-07-24 12:17:33,647 - INFO - Status updated: Idle - 
+2025-07-24 12:17:33,648 - INFO - Status updated: Idle - 
+2025-07-24 12:17:48,650 - INFO - Status updated: Idle - 
+2025-07-24 12:17:48,652 - INFO - Status updated: Idle - 
+2025-07-24 12:18:03,654 - INFO - Status updated: Idle - 
+2025-07-24 12:18:03,657 - INFO - Status updated: Idle - 
+2025-07-24 12:18:18,659 - INFO - Status updated: Idle - 
+2025-07-24 12:18:18,664 - INFO - Status updated: Idle - 
+2025-07-24 12:18:33,666 - INFO - Status updated: Idle - 
+2025-07-24 12:18:33,668 - INFO - Status updated: Idle - 
+2025-07-24 12:18:48,670 - INFO - Status updated: Idle - 
+2025-07-24 12:18:48,673 - INFO - Status updated: Idle - 
+2025-07-24 12:19:03,675 - INFO - Status updated: Idle - 
+2025-07-24 12:19:03,677 - INFO - Status updated: Idle - 
+2025-07-24 12:19:18,679 - INFO - Status updated: Idle - 
+2025-07-24 12:19:18,681 - INFO - Status updated: Idle - 
+2025-07-24 12:19:33,683 - INFO - Status updated: Idle - 
+2025-07-24 12:19:33,686 - INFO - Status updated: Idle - 
+2025-07-24 12:19:48,688 - INFO - Status updated: Idle - 
+2025-07-24 12:19:48,690 - INFO - Status updated: Idle - 
+2025-07-24 12:20:03,692 - INFO - Status updated: Idle - 
+2025-07-24 12:20:03,694 - INFO - Status updated: Idle - 
+2025-07-24 12:20:18,696 - INFO - Status updated: Idle - 
+2025-07-24 12:20:18,699 - INFO - Status updated: Idle - 
+2025-07-24 12:20:33,702 - INFO - Status updated: Idle - 
+2025-07-24 12:20:33,704 - INFO - Status updated: Idle - 
+2025-07-24 12:20:48,706 - INFO - Status updated: Idle - 
+2025-07-24 12:20:48,708 - INFO - Status updated: Idle - 
+2025-07-24 12:21:03,711 - INFO - Status updated: Idle - 
+2025-07-24 12:21:03,713 - INFO - Status updated: Idle - 
+2025-07-24 12:21:18,715 - INFO - Status updated: Idle - 
+2025-07-24 12:21:18,720 - INFO - Status updated: Idle - 
+2025-07-24 12:21:33,723 - INFO - Status updated: Idle - 
+2025-07-24 12:21:33,726 - INFO - Status updated: Idle - 
+2025-07-24 12:21:48,728 - INFO - Status updated: Idle - 
+2025-07-24 12:21:48,733 - INFO - Status updated: Idle - 
+2025-07-24 12:22:03,735 - INFO - Status updated: Idle - 
+2025-07-24 12:22:03,739 - INFO - Status updated: Idle - 
+2025-07-24 12:22:18,741 - INFO - Status updated: Idle - 
+2025-07-24 12:22:18,744 - INFO - Status updated: Idle - 
+2025-07-24 12:22:33,746 - INFO - Status updated: Idle - 
+2025-07-24 12:22:33,750 - INFO - Status updated: Idle - 
+2025-07-24 12:22:48,752 - INFO - Status updated: Idle - 
+2025-07-24 12:22:48,755 - INFO - Status updated: Idle - 
+2025-07-24 12:23:03,757 - INFO - Status updated: Idle - 
+2025-07-24 12:23:03,770 - INFO - Status updated: Idle - 
+2025-07-24 12:23:18,773 - INFO - Status updated: Idle - 
+2025-07-24 12:23:18,776 - INFO - Status updated: Idle - 
+2025-07-24 12:23:33,778 - INFO - Status updated: Idle - 
+2025-07-24 12:23:33,781 - INFO - Status updated: Idle - 
+2025-07-24 12:23:48,783 - INFO - Status updated: Idle - 
+2025-07-24 12:23:48,788 - INFO - Status updated: Idle - 
+2025-07-24 12:24:03,790 - INFO - Status updated: Idle - 
+2025-07-24 12:24:03,796 - INFO - Status updated: Idle - 
+2025-07-24 12:24:18,798 - INFO - Status updated: Idle - 
+2025-07-24 12:24:18,803 - INFO - Status updated: Idle - 
+2025-07-24 12:24:33,805 - INFO - Status updated: Idle - 
+2025-07-24 12:24:33,809 - INFO - Status updated: Idle - 
+2025-07-24 12:24:48,812 - INFO - Status updated: Idle - 
+2025-07-24 12:24:48,816 - INFO - Status updated: Idle - 
+2025-07-24 12:25:03,819 - INFO - Status updated: Idle - 
+2025-07-24 12:25:03,823 - INFO - Status updated: Idle - 
+2025-07-24 12:25:18,825 - INFO - Status updated: Idle - 
+2025-07-24 12:25:18,830 - INFO - Status updated: Idle - 
+2025-07-24 12:25:33,832 - INFO - Status updated: Idle - 
+2025-07-24 12:25:33,837 - INFO - Status updated: Idle - 
+2025-07-24 12:25:48,840 - INFO - Status updated: Idle - 
+2025-07-24 12:25:48,844 - INFO - Status updated: Idle - 
+2025-07-24 12:26:03,846 - INFO - Status updated: Idle - 
+2025-07-24 12:26:03,850 - INFO - Status updated: Idle - 
+2025-07-24 12:26:18,852 - INFO - Status updated: Idle - 
+2025-07-24 12:26:18,857 - INFO - Status updated: Idle - 
+2025-07-24 12:26:33,859 - INFO - Status updated: Idle - 
+2025-07-24 12:26:33,864 - INFO - Status updated: Idle - 
+2025-07-24 12:26:48,866 - INFO - Status updated: Idle - 
+2025-07-24 12:26:48,870 - INFO - Status updated: Idle - 
+2025-07-24 12:27:03,872 - INFO - Status updated: Idle - 
+2025-07-24 12:27:03,877 - INFO - Status updated: Idle - 
+2025-07-24 12:27:18,879 - INFO - Status updated: Idle - 
+2025-07-24 12:27:18,883 - INFO - Status updated: Idle - 
+2025-07-24 12:27:33,886 - INFO - Status updated: Idle - 
+2025-07-24 12:27:33,891 - INFO - Status updated: Idle - 
+2025-07-24 12:27:48,894 - INFO - Status updated: Idle - 
+2025-07-24 12:27:48,899 - INFO - Status updated: Idle - 
+2025-07-24 12:28:03,902 - INFO - Status updated: Idle - 
+2025-07-24 12:28:03,905 - INFO - Status updated: Idle - 
+2025-07-24 12:28:18,908 - INFO - Status updated: Idle - 
+2025-07-24 12:28:18,910 - INFO - Status updated: Idle - 
+2025-07-24 12:28:33,912 - INFO - Status updated: Idle - 
+2025-07-24 12:28:33,917 - INFO - Status updated: Idle - 
+2025-07-24 12:28:48,920 - INFO - Status updated: Idle - 
+2025-07-24 12:28:48,925 - INFO - Status updated: Idle - 
+2025-07-24 12:29:03,927 - INFO - Status updated: Idle - 
+2025-07-24 12:29:03,931 - INFO - Status updated: Idle - 
+2025-07-24 12:29:18,934 - INFO - Status updated: Idle - 
+2025-07-24 12:29:18,938 - INFO - Status updated: Idle - 
+2025-07-24 12:29:33,940 - INFO - Status updated: Idle - 
+2025-07-24 12:29:33,945 - INFO - Status updated: Idle - 
+2025-07-24 12:29:48,947 - INFO - Status updated: Idle - 
+2025-07-24 12:29:48,950 - INFO - Status updated: Idle - 
+2025-07-24 12:30:03,951 - INFO - Status updated: Idle - 
+2025-07-24 12:30:03,954 - INFO - Status updated: Idle - 
+2025-07-24 12:30:18,956 - INFO - Status updated: Idle - 
+2025-07-24 12:30:18,966 - INFO - 
+Found new file: postoffice1_merged Amritava Sanyal.pdf. Moving to process.
+2025-07-24 12:30:18,969 - INFO - Status updated: Processing - postoffice1_merged Amritava Sanyal.pdf
+2025-07-24 12:30:18,999 - INFO - [AI Processor] Starting processing for: postoffice1_merged Amritava Sanyal.pdf
+2025-07-24 12:30:19,015 - INFO - [AI Processor] Selected model 'gemini-2.5-flash-lite-preview-06-17' for 3 pages.
+2025-07-24 12:30:19,667 - INFO - [AI Processor] Authenticated with Gemini API.
+2025-07-24 12:30:21,415 - INFO - [AI Processor] File 'files/k3zymqbd3rsx' uploaded.
+2025-07-24 12:30:27,251 - INFO - [AI Processor] Deleted uploaded file 'files/k3zymqbd3rsx'.
+2025-07-24 12:30:27,261 - INFO - [AI Processor] Parsed response into a DataFrame with 27 rows.
+2025-07-24 12:30:27,261 - INFO - <bound method NDFrame.tail of           Date  ChequeNo  ... DepositAmount ClosingBalance
+0   22-01-2024       NaN  ...           0.0          867.0
+1   27-01-2024       NaN  ...           0.0         4464.0
+2   29-01-2024       NaN  ...           0.0         1464.0
+3   27-02-2024       NaN  ...           0.0         5061.0
+4   21-03-2024       NaN  ...           0.0          561.0
+5   31-03-2024       NaN  ...           0.0         4158.0
+6   18-04-2024       NaN  ...           0.0          782.0
+7   27-04-2024       NaN  ...           0.0         4379.0
+8   24-05-2024       NaN  ...           0.0          879.0
+9   27-05-2024       NaN  ...           0.0         4476.0
+10  27-06-2024       NaN  ...           0.0         8073.0
+11  29-06-2024       NaN  ...           0.0         4573.0
+12  27-07-2024       NaN  ...           0.0         8170.0
+13  27-07-2024       NaN  ...           0.0         4670.0
+14  27-08-2024       NaN  ...           0.0         8267.0
+15  27-09-2024       NaN  ...           0.0        11864.0
+16  18-10-2024       NaN  ...           0.0         1864.0
+17  26-10-2024       NaN  ...           0.0         5461.0
+18  27-11-2024       NaN  ...           0.0         9058.0
+19  27-12-2024       NaN  ...           0.0        12655.0
+20  27-01-2025       NaN  ...           0.0        16252.0
+21  27-02-2025       NaN  ...           0.0        19849.0
+22  27-03-2025       NaN  ...           0.0        23446.0
+23  31-03-2025       NaN  ...           0.0        23742.0
+24  26-04-2025       NaN  ...           0.0        27339.0
+25  27-05-2025       NaN  ...           0.0        30936.0
+26  26-06-2025       NaN  ...           0.0        34533.0
+
+[27 rows x 7 columns]>
+2025-07-24 12:30:27,327 - INFO - [AI Processor] Balance validation complete.
+2025-07-24 12:30:27,327 - INFO - <bound method NDFrame.tail of           Date  ChequeNo  ... DepositAmount ClosingBalance
+0   22-01-2024       NaN  ...           0.0          867.0
+1   27-01-2024       NaN  ...           0.0         4464.0
+2   29-01-2024       NaN  ...           0.0         1464.0
+3   27-02-2024       NaN  ...           0.0         5061.0
+4   21-03-2024       NaN  ...           0.0          561.0
+5   31-03-2024       NaN  ...           0.0         4158.0
+6   18-04-2024       NaN  ...           0.0          782.0
+7   27-04-2024       NaN  ...           0.0         4379.0
+8   24-05-2024       NaN  ...           0.0          879.0
+9   27-05-2024       NaN  ...           0.0         4476.0
+10  27-06-2024       NaN  ...           0.0         8073.0
+11  29-06-2024       NaN  ...           0.0         4573.0
+12  27-07-2024       NaN  ...           0.0         8170.0
+13  27-07-2024       NaN  ...           0.0         4670.0
+14  27-08-2024       NaN  ...           0.0         8267.0
+15  27-09-2024       NaN  ...           0.0        11864.0
+16  18-10-2024       NaN  ...           0.0         1864.0
+17  26-10-2024       NaN  ...           0.0         5461.0
+18  27-11-2024       NaN  ...           0.0         9058.0
+19  27-12-2024       NaN  ...           0.0        12655.0
+20  27-01-2025       NaN  ...           0.0        16252.0
+21  27-02-2025       NaN  ...           0.0        19849.0
+22  27-03-2025       NaN  ...           0.0        23446.0
+23  31-03-2025       NaN  ...           0.0        23742.0
+24  26-04-2025       NaN  ...           0.0        27339.0
+25  27-05-2025       NaN  ...           0.0        30936.0
+26  26-06-2025       NaN  ...           0.0        34533.0
+
+[27 rows x 7 columns]>
+2025-07-24 12:30:27,407 - INFO - [AI Processor] Successfully created Excel file at: \\pbserver\G\BankStatementConverter\Excel_Output\postoffice1_merged Amritava Sanyal.xlsx
+2025-07-24 12:30:27,410 - INFO - SUCCESS: Processing complete for 'postoffice1_merged Amritava Sanyal.pdf'.
+2025-07-24 12:30:27,445 - INFO - Status updated: Idle - 
+2025-07-24 12:30:27,446 - INFO - Status updated: Idle - 
+2025-07-24 12:30:42,448 - INFO - Status updated: Idle - 
+2025-07-24 12:30:42,454 - INFO - Status updated: Idle - 
+2025-07-24 12:30:57,456 - INFO - Status updated: Idle - 
+2025-07-24 12:30:57,460 - INFO - Status updated: Idle - 
+2025-07-24 12:31:12,462 - INFO - Status updated: Idle - 
+2025-07-24 12:31:12,466 - INFO - Status updated: Idle - 
+2025-07-24 12:31:27,469 - INFO - Status updated: Idle - 
+2025-07-24 12:31:27,484 - INFO - Status updated: Idle - 
+2025-07-24 12:31:42,487 - INFO - Status updated: Idle - 
+2025-07-24 12:31:42,491 - INFO - Status updated: Idle - 
+2025-07-24 12:31:57,493 - INFO - Status updated: Idle - 
+2025-07-24 12:31:57,498 - INFO - Status updated: Idle - 
+2025-07-24 12:32:12,504 - INFO - Status updated: Idle - 
+2025-07-24 12:32:12,509 - INFO - Status updated: Idle - 
+2025-07-24 12:32:27,511 - INFO - Status updated: Idle - 
+2025-07-24 12:32:27,514 - INFO - Status updated: Idle - 
+2025-07-24 12:32:42,517 - INFO - Status updated: Idle - 
+2025-07-24 12:32:42,522 - INFO - Status updated: Idle - 
+2025-07-24 12:32:57,523 - INFO - Status updated: Idle - 
+2025-07-24 12:32:57,526 - INFO - Status updated: Idle - 
+2025-07-24 12:33:12,529 - INFO - Status updated: Idle - 
+2025-07-24 12:33:12,533 - INFO - Status updated: Idle - 
+2025-07-24 12:33:27,535 - INFO - Status updated: Idle - 
+2025-07-24 12:33:27,541 - INFO - Status updated: Idle - 
+2025-07-24 12:33:42,543 - INFO - Status updated: Idle - 
+2025-07-24 12:33:42,547 - INFO - Status updated: Idle - 
+2025-07-24 12:33:57,548 - INFO - Status updated: Idle - 
+2025-07-24 12:33:57,551 - INFO - Status updated: Idle - 
+2025-07-24 12:34:12,553 - INFO - Status updated: Idle - 
+2025-07-24 12:34:12,560 - INFO - 
+Found new file: postoffice1_merged Amritava Sanyal.pdf. Moving to process.
+2025-07-24 12:34:12,561 - INFO - Status updated: Processing - postoffice1_merged Amritava Sanyal.pdf
+2025-07-24 12:34:12,582 - INFO - [AI Processor] Starting processing for: postoffice1_merged Amritava Sanyal.pdf
+2025-07-24 12:34:12,596 - INFO - [AI Processor] Selected model 'gemini-2.5-flash-lite-preview-06-17' for 3 pages.
+2025-07-24 12:34:13,231 - INFO - [AI Processor] Authenticated with Gemini API.
+2025-07-24 12:34:16,261 - INFO - [AI Processor] File 'files/3oow51b6lj6d' uploaded.
+2025-07-24 12:34:22,037 - INFO - [AI Processor] Deleted uploaded file 'files/3oow51b6lj6d'.
+2025-07-24 12:34:22,041 - INFO - [AI Processor] Parsed response into a DataFrame with 27 rows.
+2025-07-24 12:34:22,041 - INFO - <bound method NDFrame.tail of           Date  ChequeNo  ... DepositAmount  ClosingBalance
+0   22-01-2024       NaN  ...           0.0           867.0
+1   27-01-2024       NaN  ...        3000.0          4464.0
+2   29-01-2024       NaN  ...           0.0          1464.0
+3   27-02-2024       NaN  ...        3000.0          5061.0
+4   21-03-2024       NaN  ...           0.0           561.0
+5   31-03-2024       NaN  ...           0.0          4158.0
+6   18-04-2024       NaN  ...           0.0           782.0
+7   27-04-2024       NaN  ...           0.0          4379.0
+8   24-05-2024       NaN  ...           0.0           879.0
+9   27-05-2024       NaN  ...           0.0          4476.0
+10  27-06-2024       NaN  ...           0.0          8073.0
+11  29-06-2024       NaN  ...           0.0          4573.0
+12  27-07-2024       NaN  ...           0.0          8170.0
+13  27-07-2024       NaN  ...           0.0          4670.0
+14  27-08-2024       NaN  ...           0.0          8267.0
+15  27-09-2024       NaN  ...           0.0         11864.0
+16  18-10-2024       NaN  ...       10000.0          1864.0
+17  26-10-2024       NaN  ...           0.0          5461.0
+18  27-11-2024       NaN  ...           0.0          9058.0
+19  27-12-2024       NaN  ...           0.0         12655.0
+20  27-01-2025       NaN  ...           0.0         16252.0
+21  27-02-2025       NaN  ...           0.0         19849.0
+22  27-03-2025       NaN  ...           0.0         23446.0
+23  31-03-2025       NaN  ...           0.0         23742.0
+24  26-04-2025       NaN  ...           0.0         27339.0
+25  27-05-2025       NaN  ...           0.0         30936.0
+26  26-06-2025       NaN  ...           0.0         34533.0
+
+[27 rows x 7 columns]>
+2025-07-24 12:34:22,082 - INFO - [AI Processor] Balance validation complete.
+2025-07-24 12:34:22,082 - INFO - <bound method NDFrame.tail of           Date  ChequeNo  ... DepositAmount  ClosingBalance
+0   22-01-2024       NaN  ...           0.0           867.0
+1   27-01-2024       NaN  ...        3000.0          4464.0
+2   29-01-2024       NaN  ...           0.0          1464.0
+3   27-02-2024       NaN  ...        3000.0          5061.0
+4   21-03-2024       NaN  ...           0.0           561.0
+5   31-03-2024       NaN  ...           0.0          4158.0
+6   18-04-2024       NaN  ...           0.0           782.0
+7   27-04-2024       NaN  ...           0.0          4379.0
+8   24-05-2024       NaN  ...           0.0           879.0
+9   27-05-2024       NaN  ...           0.0          4476.0
+10  27-06-2024       NaN  ...           0.0          8073.0
+11  29-06-2024       NaN  ...           0.0          4573.0
+12  27-07-2024       NaN  ...           0.0          8170.0
+13  27-07-2024       NaN  ...           0.0          4670.0
+14  27-08-2024       NaN  ...           0.0          8267.0
+15  27-09-2024       NaN  ...           0.0         11864.0
+16  18-10-2024       NaN  ...       10000.0          1864.0
+17  26-10-2024       NaN  ...           0.0          5461.0
+18  27-11-2024       NaN  ...           0.0          9058.0
+19  27-12-2024       NaN  ...           0.0         12655.0
+20  27-01-2025       NaN  ...           0.0         16252.0
+21  27-02-2025       NaN  ...           0.0         19849.0
+22  27-03-2025       NaN  ...           0.0         23446.0
+23  31-03-2025       NaN  ...           0.0         23742.0
+24  26-04-2025       NaN  ...           0.0         27339.0
+25  27-05-2025       NaN  ...           0.0         30936.0
+26  26-06-2025       NaN  ...           0.0         34533.0
+
+[27 rows x 7 columns]>
+2025-07-24 12:34:22,157 - INFO - [AI Processor] Successfully created Excel file at: \\pbserver\G\BankStatementConverter\Excel_Output\postoffice1_merged Amritava Sanyal.xlsx
+2025-07-24 12:34:22,161 - INFO - SUCCESS: Processing complete for 'postoffice1_merged Amritava Sanyal.pdf'.
+2025-07-24 12:34:22,215 - INFO - Status updated: Idle - 
+2025-07-24 12:34:22,216 - INFO - Status updated: Idle - 
+2025-07-24 12:34:37,217 - INFO - Status updated: Idle - 
+2025-07-24 12:34:37,220 - INFO - Status updated: Idle - 
+2025-07-24 12:34:52,222 - INFO - Status updated: Idle - 
+2025-07-24 12:34:52,227 - INFO - Status updated: Idle - 
+2025-07-24 12:35:07,229 - INFO - Status updated: Idle - 
+2025-07-24 12:35:07,234 - INFO - Status updated: Idle - 
+2025-07-24 12:35:22,236 - INFO - Status updated: Idle - 
+2025-07-24 12:35:22,242 - INFO - 
+Found new file: postoffice1_merged Amritava Sanyal.pdf. Moving to process.
+2025-07-24 12:35:22,244 - INFO - Status updated: Processing - postoffice1_merged Amritava Sanyal.pdf
+2025-07-24 12:35:23,626 - INFO - [AI Processor] Starting processing for: postoffice1_merged Amritava Sanyal.pdf
+2025-07-24 12:35:23,642 - INFO - [AI Processor] Selected model 'gemini-2.5-flash-lite-preview-06-17' for 3 pages.
+2025-07-24 12:35:24,261 - INFO - [AI Processor] Authenticated with Gemini API.
+2025-07-24 12:35:26,046 - INFO - [AI Processor] File 'files/cz34njqjycyc' uploaded.
+2025-07-24 12:35:33,249 - INFO - [AI Processor] Deleted uploaded file 'files/cz34njqjycyc'.
+2025-07-24 12:35:33,253 - INFO - [AI Processor] Parsed response into a DataFrame with 27 rows.
+2025-07-24 12:35:33,253 - INFO - <bound method NDFrame.tail of           Date  ChequeNo  ... DepositAmount  ClosingBalance
+0   22-01-2024       NaN  ...           0.0           867.0
+1   27-01-2024       NaN  ...           0.0           864.0
+2   29-01-2024       NaN  ...           0.0          4464.0
+3   27-02-2024       NaN  ...           0.0          5061.0
+4   21-03-2024       NaN  ...           0.0           561.0
+5   31-03-2024       NaN  ...           0.0          4158.0
+6   18-04-2024       NaN  ...           0.0           782.0
+7   27-04-2024       NaN  ...           0.0          4379.0
+8   24-05-2024       NaN  ...           0.0           879.0
+9   27-05-2024       NaN  ...           0.0          4476.0
+10  27-06-2024       NaN  ...           0.0          8073.0
+11  29-06-2024       NaN  ...           0.0          4573.0
+12  27-07-2024       NaN  ...           0.0          8170.0
+13  27-07-2024       NaN  ...           0.0          4670.0
+14  27-08-2024       NaN  ...           0.0          8267.0
+15  27-09-2024       NaN  ...           0.0         11864.0
+16  18-10-2024       NaN  ...           0.0          1864.0
+17  26-10-2024       NaN  ...           0.0          5461.0
+18  27-11-2024       NaN  ...           0.0          9058.0
+19  27-12-2024       NaN  ...           0.0         12655.0
+20  27-01-2025       NaN  ...           0.0         16252.0
+21  27-02-2025       NaN  ...           0.0         19849.0
+22  27-03-2025       NaN  ...           0.0         23446.0
+23  31-03-2025       NaN  ...           0.0         23742.0
+24  26-04-2025       NaN  ...           0.0         27339.0
+25  27-05-2025       NaN  ...           0.0         30936.0
+26  26-06-2025       NaN  ...           0.0         34533.0
+
+[27 rows x 7 columns]>
+2025-07-24 12:35:33,302 - INFO - [AI Processor] Balance validation complete.
+2025-07-24 12:35:33,302 - INFO - <bound method NDFrame.tail of           Date  ChequeNo  ... DepositAmount  ClosingBalance
+0   22-01-2024       NaN  ...           0.0           867.0
+1   27-01-2024       NaN  ...           0.0           864.0
+2   29-01-2024       NaN  ...           0.0          4464.0
+3   27-02-2024       NaN  ...           0.0          5061.0
+4   21-03-2024       NaN  ...           0.0           561.0
+5   31-03-2024       NaN  ...           0.0          4158.0
+6   18-04-2024       NaN  ...           0.0           782.0
+7   27-04-2024       NaN  ...           0.0          4379.0
+8   24-05-2024       NaN  ...           0.0           879.0
+9   27-05-2024       NaN  ...           0.0          4476.0
+10  27-06-2024       NaN  ...           0.0          8073.0
+11  29-06-2024       NaN  ...           0.0          4573.0
+12  27-07-2024       NaN  ...           0.0          8170.0
+13  27-07-2024       NaN  ...           0.0          4670.0
+14  27-08-2024       NaN  ...           0.0          8267.0
+15  27-09-2024       NaN  ...           0.0         11864.0
+16  18-10-2024       NaN  ...           0.0          1864.0
+17  26-10-2024       NaN  ...           0.0          5461.0
+18  27-11-2024       NaN  ...           0.0          9058.0
+19  27-12-2024       NaN  ...           0.0         12655.0
+20  27-01-2025       NaN  ...           0.0         16252.0
+21  27-02-2025       NaN  ...           0.0         19849.0
+22  27-03-2025       NaN  ...           0.0         23446.0
+23  31-03-2025       NaN  ...           0.0         23742.0
+24  26-04-2025       NaN  ...           0.0         27339.0
+25  27-05-2025       NaN  ...           0.0         30936.0
+26  26-06-2025       NaN  ...           0.0         34533.0
+
+[27 rows x 7 columns]>
+2025-07-24 12:35:33,379 - INFO - [AI Processor] Successfully created Excel file at: \\pbserver\G\BankStatementConverter\Excel_Output\postoffice1_merged Amritava Sanyal.xlsx
+2025-07-24 12:35:33,382 - INFO - SUCCESS: Processing complete for 'postoffice1_merged Amritava Sanyal.pdf'.
+2025-07-24 12:35:33,434 - INFO - Status updated: Idle - 
+2025-07-24 12:35:33,437 - INFO - Status updated: Idle - 
+2025-07-24 12:35:48,439 - INFO - Status updated: Idle - 
+2025-07-24 12:35:48,444 - INFO - Status updated: Idle - 
+2025-07-24 12:36:03,447 - INFO - Status updated: Idle - 
+2025-07-24 12:36:03,454 - INFO - 
+Found new file: postoffice1_merged Amritava Sanyal.pdf. Moving to process.
+2025-07-24 12:36:03,455 - INFO - Status updated: Processing - postoffice1_merged Amritava Sanyal.pdf
+2025-07-24 12:36:04,494 - INFO - [AI Processor] Starting processing for: postoffice1_merged Amritava Sanyal.pdf
+2025-07-24 12:36:04,507 - INFO - [AI Processor] Selected model 'gemini-2.5-flash-lite-preview-06-17' for 3 pages.
+2025-07-24 12:36:05,138 - INFO - [AI Processor] Authenticated with Gemini API.
+2025-07-24 12:36:06,801 - INFO - [AI Processor] File 'files/rngp40wf3t7c' uploaded.
+2025-07-24 12:36:12,839 - INFO - [AI Processor] Deleted uploaded file 'files/rngp40wf3t7c'.
+2025-07-24 12:36:12,843 - INFO - [AI Processor] Parsed response into a DataFrame with 27 rows.
+2025-07-24 12:36:12,843 - INFO - <bound method NDFrame.tail of           Date  ChequeNo  ... DepositAmount  ClosingBalance
+0   22-01-2024       NaN  ...           0.0           867.0
+1   27-01-2024       NaN  ...           0.0        804464.0
+2   29-01-2024       NaN  ...           0.0          1464.0
+3   27-02-2024       NaN  ...           0.0          5061.0
+4   21-03-2024       NaN  ...           0.0           561.0
+5   31-03-2024       NaN  ...           0.0          4158.0
+6   18-04-2024       NaN  ...           0.0           782.0
+7   27-04-2024       NaN  ...           0.0          4379.0
+8   24-05-2024       NaN  ...           0.0           879.0
+9   27-05-2024       NaN  ...           0.0          4476.0
+10  27-06-2024       NaN  ...           0.0          8073.0
+11  29-06-2024       NaN  ...           0.0          4573.0
+12  27-07-2024       NaN  ...           0.0          8170.0
+13  27-07-2024       NaN  ...           0.0          4670.0
+14  27-08-2024       NaN  ...           0.0          8267.0
+15  27-09-2024       NaN  ...           0.0         11864.0
+16  18-10-2024       NaN  ...           0.0          1864.0
+17  26-10-2024       NaN  ...           0.0          5461.0
+18  27-11-2024       NaN  ...           3.0          9058.0
+19  27-12-2024       NaN  ...           0.0         12655.0
+20  27-01-2025       NaN  ...           0.0         16252.0
+21  27-02-2025       NaN  ...           0.0         19849.0
+22  27-03-2025       NaN  ...           0.0         23446.0
+23  31-03-2025       NaN  ...           0.0         23742.0
+24  26-04-2025       NaN  ...           0.0         27339.0
+25  27-05-2025       NaN  ...           0.0         30936.0
+26  26-06-2025       NaN  ...           0.0         34533.0
+
+[27 rows x 7 columns]>
+2025-07-24 12:36:12,901 - INFO - [AI Processor] Balance validation complete.
+2025-07-24 12:36:12,901 - INFO - <bound method NDFrame.tail of           Date  ChequeNo  ... DepositAmount  ClosingBalance
+0   22-01-2024       NaN  ...           0.0           867.0
+1   27-01-2024       NaN  ...           0.0        804464.0
+2   29-01-2024       NaN  ...           0.0          1464.0
+3   27-02-2024       NaN  ...           0.0          5061.0
+4   21-03-2024       NaN  ...           0.0           561.0
+5   31-03-2024       NaN  ...           0.0          4158.0
+6   18-04-2024       NaN  ...           0.0           782.0
+7   27-04-2024       NaN  ...           0.0          4379.0
+8   24-05-2024       NaN  ...           0.0           879.0
+9   27-05-2024       NaN  ...           0.0          4476.0
+10  27-06-2024       NaN  ...           0.0          8073.0
+11  29-06-2024       NaN  ...           0.0          4573.0
+12  27-07-2024       NaN  ...           0.0          8170.0
+13  27-07-2024       NaN  ...           0.0          4670.0
+14  27-08-2024       NaN  ...           0.0          8267.0
+15  27-09-2024       NaN  ...           0.0         11864.0
+16  18-10-2024       NaN  ...           0.0          1864.0
+17  26-10-2024       NaN  ...           0.0          5461.0
+18  27-11-2024       NaN  ...           3.0          9058.0
+19  27-12-2024       NaN  ...           0.0         12655.0
+20  27-01-2025       NaN  ...           0.0         16252.0
+21  27-02-2025       NaN  ...           0.0         19849.0
+22  27-03-2025       NaN  ...           0.0         23446.0
+23  31-03-2025       NaN  ...           0.0         23742.0
+24  26-04-2025       NaN  ...           0.0         27339.0
+25  27-05-2025       NaN  ...           0.0         30936.0
+26  26-06-2025       NaN  ...           0.0         34533.0
+
+[27 rows x 7 columns]>
+2025-07-24 12:36:12,979 - INFO - [AI Processor] Successfully created Excel file at: \\pbserver\G\BankStatementConverter\Excel_Output\postoffice1_merged Amritava Sanyal.xlsx
+2025-07-24 12:36:12,982 - INFO - SUCCESS: Processing complete for 'postoffice1_merged Amritava Sanyal.pdf'.
+2025-07-24 12:36:13,038 - INFO - Status updated: Idle - 
+2025-07-24 12:36:13,040 - INFO - Status updated: Idle - 
+2025-07-24 12:36:28,042 - INFO - Status updated: Idle - 
+2025-07-24 12:36:28,047 - INFO - Status updated: Idle - 
+2025-07-24 12:36:43,049 - INFO - Status updated: Idle - 
+2025-07-24 12:36:43,054 - INFO - Status updated: Idle - 
+2025-07-24 12:36:58,056 - INFO - Status updated: Idle - 
+2025-07-24 12:36:58,060 - INFO - Status updated: Idle - 
+2025-07-24 12:37:13,062 - INFO - Status updated: Idle - 
+2025-07-24 12:37:13,067 - INFO - Status updated: Idle - 
+2025-07-24 12:37:28,069 - INFO - Status updated: Idle - 
+2025-07-24 12:37:28,073 - INFO - Status updated: Idle - 
+2025-07-24 12:37:43,076 - INFO - Status updated: Idle - 
+2025-07-24 12:37:43,080 - INFO - Status updated: Idle - 
+2025-07-24 12:37:58,082 - INFO - Status updated: Idle - 
+2025-07-24 12:37:58,090 - INFO - 
+Found new file: postoffice1_merged Amritava Sanyal.pdf. Moving to process.
+2025-07-24 12:37:58,092 - INFO - Status updated: Processing - postoffice1_merged Amritava Sanyal.pdf
+2025-07-24 12:37:58,206 - INFO - [AI Processor] Starting processing for: postoffice1_merged Amritava Sanyal.pdf
+2025-07-24 12:37:58,222 - INFO - [AI Processor] Selected model 'gemini-2.5-flash-lite-preview-06-17' for 3 pages.
+2025-07-24 12:37:58,836 - INFO - [AI Processor] Authenticated with Gemini API.
+2025-07-24 12:38:00,908 - INFO - [AI Processor] File 'files/2q7mm4npxiu4' uploaded.
+2025-07-24 12:38:06,583 - INFO - [AI Processor] Deleted uploaded file 'files/2q7mm4npxiu4'.
+2025-07-24 12:38:06,587 - INFO - [AI Processor] Parsed response into a DataFrame with 27 rows.
+2025-07-24 12:38:06,588 - INFO - <bound method NDFrame.tail of           Date  ChequeNo  ... DepositAmount  ClosingBalance
+0   22-01-2024       NaN  ...           0.0           867.0
+1   27-01-2024       NaN  ...        3000.0          1464.0
+2   29-01-2024       NaN  ...           0.0          4464.0
+3   27-02-2024       NaN  ...        3000.0          5061.0
+4   21-03-2024       NaN  ...           0.0           561.0
+5   31-03-2024       NaN  ...           0.0          4158.0
+6   18-04-2024       NaN  ...           0.0           782.0
+7   27-04-2024       NaN  ...           0.0          4379.0
+8   24-05-2024       NaN  ...           0.0           879.0
+9   27-05-2024       NaN  ...           0.0          4476.0
+10  27-06-2024       NaN  ...           0.0          8073.0
+11  29-06-2024       NaN  ...           0.0          4573.0
+12  27-07-2024       NaN  ...           0.0          8170.0
+13  27-07-2024       NaN  ...           0.0          4670.0
+14  27-08-2024       NaN  ...           0.0          8267.0
+15  27-09-2024       NaN  ...           0.0         11864.0
+16  18-10-2024       NaN  ...       10000.0          1864.0
+17  26-10-2024       NaN  ...           0.0          5461.0
+18  27-11-2024       NaN  ...           3.0          9058.0
+19  27-12-2024       NaN  ...           0.0         12655.0
+20  27-01-2025       NaN  ...           0.0         16252.0
+21  27-02-2025       NaN  ...           0.0         19849.0
+22  27-03-2025       NaN  ...           0.0         23446.0
+23  31-03-2025       NaN  ...           0.0         23742.0
+24  26-04-2025       NaN  ...           0.0         27339.0
+25  27-05-2025       NaN  ...           0.0         30936.0
+26  26-06-2025       NaN  ...           0.0         34533.0
+
+[27 rows x 7 columns]>
+2025-07-24 12:38:06,646 - INFO - [AI Processor] Balance validation complete.
+2025-07-24 12:38:06,646 - INFO - <bound method NDFrame.tail of           Date  ChequeNo  ... DepositAmount  ClosingBalance
+0   22-01-2024       NaN  ...           0.0           867.0
+1   27-01-2024       NaN  ...        3000.0          1464.0
+2   29-01-2024       NaN  ...           0.0          4464.0
+3   27-02-2024       NaN  ...        3000.0          5061.0
+4   21-03-2024       NaN  ...           0.0           561.0
+5   31-03-2024       NaN  ...           0.0          4158.0
+6   18-04-2024       NaN  ...           0.0           782.0
+7   27-04-2024       NaN  ...           0.0          4379.0
+8   24-05-2024       NaN  ...           0.0           879.0
+9   27-05-2024       NaN  ...           0.0          4476.0
+10  27-06-2024       NaN  ...           0.0          8073.0
+11  29-06-2024       NaN  ...           0.0          4573.0
+12  27-07-2024       NaN  ...           0.0          8170.0
+13  27-07-2024       NaN  ...           0.0          4670.0
+14  27-08-2024       NaN  ...           0.0          8267.0
+15  27-09-2024       NaN  ...           0.0         11864.0
+16  18-10-2024       NaN  ...       10000.0          1864.0
+17  26-10-2024       NaN  ...           0.0          5461.0
+18  27-11-2024       NaN  ...           3.0          9058.0
+19  27-12-2024       NaN  ...           0.0         12655.0
+20  27-01-2025       NaN  ...           0.0         16252.0
+21  27-02-2025       NaN  ...           0.0         19849.0
+22  27-03-2025       NaN  ...           0.0         23446.0
+23  31-03-2025       NaN  ...           0.0         23742.0
+24  26-04-2025       NaN  ...           0.0         27339.0
+25  27-05-2025       NaN  ...           0.0         30936.0
+26  26-06-2025       NaN  ...           0.0         34533.0
+
+[27 rows x 7 columns]>
+2025-07-24 12:38:06,725 - INFO - [AI Processor] Successfully created Excel file at: \\pbserver\G\BankStatementConverter\Excel_Output\postoffice1_merged Amritava Sanyal.xlsx
+2025-07-24 12:38:06,727 - INFO - SUCCESS: Processing complete for 'postoffice1_merged Amritava Sanyal.pdf'.
+2025-07-24 12:38:06,785 - INFO - Status updated: Idle - 
+2025-07-24 12:38:06,787 - INFO - Status updated: Idle - 
+2025-07-24 12:38:21,789 - INFO - Status updated: Idle - 
+2025-07-24 12:38:21,794 - INFO - Status updated: Idle - 
+2025-07-24 12:38:36,796 - INFO - Status updated: Idle - 
+2025-07-24 12:38:36,801 - INFO - Status updated: Idle - 
+2025-07-24 12:38:51,803 - INFO - Status updated: Idle - 
+2025-07-24 12:38:51,807 - INFO - Status updated: Idle - 
+2025-07-24 12:39:06,809 - INFO - Status updated: Idle - 
+2025-07-24 12:39:06,814 - INFO - Status updated: Idle - 
+2025-07-24 12:39:21,816 - INFO - Status updated: Idle - 
+2025-07-24 12:39:21,820 - INFO - Status updated: Idle - 
+2025-07-24 12:39:36,823 - INFO - Status updated: Idle - 
+2025-07-24 12:39:36,827 - INFO - Status updated: Idle - 
+2025-07-24 12:39:51,830 - INFO - Status updated: Idle - 
+2025-07-24 12:39:51,834 - INFO - Status updated: Idle - 
+2025-07-24 12:40:06,836 - INFO - Status updated: Idle - 
+2025-07-24 12:40:06,841 - INFO - Status updated: Idle - 
+2025-07-24 12:40:21,844 - INFO - Status updated: Idle - 
+2025-07-24 12:40:21,849 - INFO - Status updated: Idle - 
+2025-07-24 12:40:36,851 - INFO - Status updated: Idle - 
+2025-07-24 12:40:36,855 - INFO - Status updated: Idle - 
+2025-07-24 12:40:51,857 - INFO - Status updated: Idle - 
+2025-07-24 12:40:51,862 - INFO - Status updated: Idle - 
+2025-07-24 12:41:06,865 - INFO - Status updated: Idle - 
+2025-07-24 12:41:06,870 - INFO - Status updated: Idle - 
+2025-07-24 12:41:21,873 - INFO - Status updated: Idle - 
+2025-07-24 12:41:21,878 - INFO - Status updated: Idle - 
+2025-07-24 12:41:36,882 - INFO - Status updated: Idle - 
+2025-07-24 12:41:36,894 - INFO - Status updated: Idle - 
+2025-07-24 12:41:51,897 - INFO - Status updated: Idle - 
+2025-07-24 12:41:51,901 - INFO - Status updated: Idle - 
+2025-07-24 12:42:06,903 - INFO - Status updated: Idle - 
+2025-07-24 12:42:06,908 - INFO - Status updated: Idle - 
+2025-07-24 12:42:21,910 - INFO - Status updated: Idle - 
+2025-07-24 12:42:21,914 - INFO - Status updated: Idle - 
+2025-07-24 12:42:36,917 - INFO - Status updated: Idle - 
+2025-07-24 12:42:36,922 - INFO - Status updated: Idle - 
+2025-07-24 12:42:51,924 - INFO - Status updated: Idle - 
+2025-07-24 12:42:51,930 - INFO - Status updated: Idle - 
+2025-07-24 12:43:06,931 - INFO - Status updated: Idle - 
+2025-07-24 12:43:06,936 - INFO - Status updated: Idle - 
+2025-07-24 12:43:21,938 - INFO - Status updated: Idle - 
+2025-07-24 12:43:21,942 - INFO - Status updated: Idle - 
+2025-07-24 12:43:36,945 - INFO - Status updated: Idle - 
+2025-07-24 12:43:36,950 - INFO - Status updated: Idle - 
+2025-07-24 12:43:51,952 - INFO - Status updated: Idle - 
+2025-07-24 12:43:51,957 - INFO - Status updated: Idle - 
+2025-07-24 12:44:06,959 - INFO - Status updated: Idle - 
+2025-07-24 12:44:06,964 - INFO - Status updated: Idle - 
+2025-07-24 12:44:21,966 - INFO - Status updated: Idle - 
+2025-07-24 12:44:21,970 - INFO - Status updated: Idle - 
+2025-07-24 12:44:36,972 - INFO - Status updated: Idle - 
+2025-07-24 12:44:36,977 - INFO - Status updated: Idle - 
+2025-07-24 12:44:51,979 - INFO - Status updated: Idle - 
+2025-07-24 12:44:51,984 - INFO - Status updated: Idle - 
+2025-07-24 12:45:06,986 - INFO - Status updated: Idle - 
+2025-07-24 12:45:06,991 - INFO - Status updated: Idle - 
+2025-07-24 12:45:21,993 - INFO - Status updated: Idle - 
+2025-07-24 12:45:22,000 - INFO - Status updated: Idle - 
+2025-07-24 12:45:37,002 - INFO - Status updated: Idle - 
+2025-07-24 12:45:37,007 - INFO - Status updated: Idle - 
+2025-07-24 12:45:52,009 - INFO - Status updated: Idle - 
+2025-07-24 12:45:52,013 - INFO - Status updated: Idle - 
+2025-07-24 12:46:07,016 - INFO - Status updated: Idle - 
+2025-07-24 12:46:07,020 - INFO - Status updated: Idle - 
+2025-07-24 12:46:22,022 - INFO - Status updated: Idle - 
+2025-07-24 12:46:22,026 - INFO - Status updated: Idle - 
+2025-07-24 12:46:37,028 - INFO - Status updated: Idle - 
+2025-07-24 12:46:37,034 - INFO - Status updated: Idle - 
+2025-07-24 12:46:52,036 - INFO - Status updated: Idle - 
+2025-07-24 12:46:52,042 - INFO - Status updated: Idle - 
+2025-07-24 12:47:07,044 - INFO - Status updated: Idle - 
+2025-07-24 12:47:07,049 - INFO - Status updated: Idle - 
+2025-07-24 12:47:22,051 - INFO - Status updated: Idle - 
+2025-07-24 12:47:22,056 - INFO - Status updated: Idle - 
+2025-07-24 12:47:37,058 - INFO - Status updated: Idle - 
+2025-07-24 12:47:37,062 - INFO - Status updated: Idle - 
+2025-07-24 12:47:52,064 - INFO - Status updated: Idle - 
+2025-07-24 12:47:52,070 - INFO - Status updated: Idle - 
+2025-07-24 12:48:07,072 - INFO - Status updated: Idle - 
+2025-07-24 12:48:07,076 - INFO - Status updated: Idle - 
+2025-07-24 12:48:22,079 - INFO - Status updated: Idle - 
+2025-07-24 12:48:22,083 - INFO - Status updated: Idle - 
+2025-07-24 12:48:37,085 - INFO - Status updated: Idle - 
+2025-07-24 12:48:37,090 - INFO - Status updated: Idle - 
+2025-07-24 12:48:52,091 - INFO - Status updated: Idle - 
+2025-07-24 12:48:52,095 - INFO - Status updated: Idle - 
+2025-07-24 12:49:07,097 - INFO - Status updated: Idle - 
+2025-07-24 12:49:07,101 - INFO - Status updated: Idle - 
+2025-07-24 12:49:22,103 - INFO - Status updated: Idle - 
+2025-07-24 12:49:22,108 - INFO - Status updated: Idle - 
+2025-07-24 12:49:37,110 - INFO - Status updated: Idle - 
+2025-07-24 12:49:37,115 - INFO - Status updated: Idle - 
+2025-07-24 12:49:52,117 - INFO - Status updated: Idle - 
+2025-07-24 12:49:52,122 - INFO - Status updated: Idle - 
+2025-07-24 12:50:07,125 - INFO - Status updated: Idle - 
+2025-07-24 12:50:07,130 - INFO - Status updated: Idle - 
+2025-07-24 12:50:22,135 - INFO - Status updated: Idle - 
+2025-07-24 12:50:22,141 - INFO - Status updated: Idle - 
+2025-07-24 12:50:37,143 - INFO - Status updated: Idle - 
+2025-07-24 12:50:37,147 - INFO - Status updated: Idle - 
+2025-07-24 12:50:52,149 - INFO - Status updated: Idle - 
+2025-07-24 12:50:52,154 - INFO - Status updated: Idle - 
+2025-07-24 12:51:07,156 - INFO - Status updated: Idle - 
+2025-07-24 12:51:07,161 - INFO - Status updated: Idle - 
