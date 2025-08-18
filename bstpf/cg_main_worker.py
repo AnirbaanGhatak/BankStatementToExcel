@@ -6,16 +6,16 @@ import json
 from datetime import datetime
 from dotenv import load_dotenv
 from logging_config import log
-import pdf_processor as pdf_processor  # Import our refactored AI engine
+import cg_pdf_processor as pdf_processor  # Import our refactored AI engine
 
 
 # --- Configuration ---
-INPUT_FOLDER = r"\\pbserver\G\BankStatementConverter\PDF_Input_(UPTO 7MB_REMOVE PASSWORDS)"
-PROCESSED_FOLDER = r"\\pbserver\G\BankStatementConverter\Processed_pdfs"
-OUTPUT_FOLDER = r"\\pbserver\G\BankStatementConverter\Excel_Output"
-REJECTED_FOLDER = r"\\pbserver\G\BankStatementConverter\Rejected_files"
-IN_PROCESS_FOLDER = r"\\pbserver\G\BankStatementConverter\In_process" # New folder for atomic moves
-STATUS_FILE = r'C:\Users\DELL\coe\bstpf\processing_status.json' # Assuming code lives here
+INPUT_FOLDER = r"\\pbserver\G\CapitalGainsConverter\INPUT(Upto_7MB)"
+PROCESSED_FOLDER = r"\\pbserver\G\CapitalGainsConverter\PROCESSED"
+OUTPUT_FOLDER = r"\\pbserver\G\CapitalGainsConverter\OUTPUT"
+REJECTED_FOLDER = r"\\pbserver\G\CapitalGainsConverter\REJECTED"
+IN_PROCESS_FOLDER = r"\\pbserver\G\CapitalGainsConverter\INPROCESS" # New folder for atomic moves
+STATUS_FILE = r'C:\Users\DELL\coe\bstpf\processing_status.json'
 
 FILE_SIZE_LIMIT_BYTES = 7 * 1024 * 1024
 SLEEP_INTERVAL = 15
@@ -33,7 +33,7 @@ def update_status(status_message, filename=None):
 
 def main():
     """The main worker function that runs the continuous workflow loop."""
-    log.info("--- Automated PDF Processor Worker Started ---")
+    log.info("--- Automated Capital Gains PDF Processor Worker Started ---")
     
     # Ensure all folders exist at startup
     for folder in [INPUT_FOLDER, PROCESSED_FOLDER, OUTPUT_FOLDER, REJECTED_FOLDER, IN_PROCESS_FOLDER]:
@@ -71,10 +71,10 @@ def main():
             basename = pathlib.Path(filename).stem
             output_excel_path = os.path.join(OUTPUT_FOLDER, f"{basename}.xlsx")
             
-            result = pdf_processor.process_pdf(processing_path, output_excel_path)
+            result = pdf_processor.process_cg(processing_path, output_excel_path)
 
             # --- Handle Result ---
-            if "ERROR" in result:
+            if "ERROR" == result:
                 log.error(f"Processing failed for '{filename}'. Moving back to input queue. Details: {result}")
                 # The 'finally' block will handle moving the file back.
             else:
