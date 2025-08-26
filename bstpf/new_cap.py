@@ -111,7 +111,7 @@ def convert_julius_bar(df_main, fl_name):
 
     df_main.columns = ["Company", "Sell Date", "Quantity", "Sell Rate", "Total Sale Value", "Purchase Date", "Purchase Rate","Actual Cost", "FMV as on 31-01-2018/Indexed Rate", "Applicable Rate", "Effective Cost", "Days Held", "Short Term", "Long Term", "Effective LT"]
 
-    df_main.to_excel("")
+    df_main.to_excel(f"{fl_name}")
 
 
 def convert_cams(df_main, fl_name):
@@ -120,15 +120,41 @@ def convert_cams(df_main, fl_name):
     start_label_index = df_main.index[df_main[0] == cams_key[0]][0]
     end_label_index = df_main.index[df_main[0] == cams_key[1]][0]
 
-    start, end = get_idx(df_main, cams_key)
+    cams_df = pandas.DataFrame()
 
-    df_main = df_main.iloc[start:end+1,:]
+    r1 = df_main[0].value_counts()[cams_key[0]]
 
-    mask1 = df_main[5].apply(is_comp)
+    for x in range(0,r1):
+        start, end = get_idx(df_main, cams_key)
 
-    df_main = df_main[~mask1]
+        temp = df_main.iloc[start:end+1,:]
+
+        cams_df = pandas.concat([cams_df, temp], ignore_index=True)
+
+    mask1 = cams_df[5].apply(is_comp)
+
+    df_main = cams_df[~mask1]
 
     df_main.columns = ["Scheme Name", "Total Count", "Total Amount", "Total Cost", "Indexed Cost", "Grandfathered Value, Market Value as on 31/01/2018", "Short Term","LongTerm with Indexation", "LongTerm without Indexation", "TDS Amount"]
 
+    df_main.to_excel(f"{fl_name}.xlsx")
 
-# def convert_icici_prudential(df, fl_name):
+def convert_icici_prudential(df_main, fl_name):
+    key_words = ['Direct Equity','Sell Date']
+
+
+    r1 = df_main[0].value_counts()['Sell Date']
+
+
+    for x in range(0,r1):
+        start, end = get_idx(df_main, key_words)
+
+        end = end+3
+        indices_to_drop = df_main.iloc[start:end].index
+
+        df_main.drop(indices_to_drop, inplace=True)
+    
+    df_main.columns = ["Company", "Sale Date", "Quantity", "Sale Rate", "Sale Amount", "Purchase Date", "Purchase Rate","Price on 31-Jan-18(M)", "Purchase Amount", "Days Held", "Short Term", "Long Term"]
+
+    df_main.to_excel(f"{fl_name}.xlsx")
+
