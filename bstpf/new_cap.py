@@ -23,10 +23,40 @@ def get_tables(file):
 
     ##based on file name decide which function to use
 
- 
+def is_comp(val):
+    if not isinstance(val, str):
+        return False
+
+    # 2. Strip whitespace from the string. This is the key change.
+    #    "   Company A   " -> "Company A"
+    #    "       "         -> ""
+    cleaned_val = val.strip()
+
+    # 3. Check if the cleaned string is empty. If it is, it's not a company name.
+    #    This now correctly handles strings that were originally just whitespace.
+    if not cleaned_val:
+        return False
+
+    # 4. Now that we know we have a non-empty, cleaned string, apply the final rules.
+    if cleaned_val.lower() == 'total' or cleaned_val[0].isdigit():
+        return False
+
+    # 5. If it passed all the checks, it's a company name.
+    return True
+
+
+def get_idx(df_main, arr):
+    start_label_index = df_main.index[df_main[0] == arr[0]][0]
+    end_label_index = df_main.index[df_main[0] == arr[1]][0]
+
+    start_pos = df_main.index.get_loc(start_label_index)
+    end_pos = df_main.index.get_loc(end_label_index)
+
+    return start_pos, end_pos
+
 # Julius Bar Logic
 
-def convert_julius_bar(df_main, ):
+def convert_julius_bar(df_main, fl_name):
     key_words = ['Direct Equity','Sell Date']
 
 
@@ -34,13 +64,10 @@ def convert_julius_bar(df_main, ):
 
 
     for x in range(0,r1):
-        start_label_index = df_main.index[df_main[0] == key_words[0]][0]
-        end_label_index = df_main.index[df_main[0] == key_words[1]][0]
-        start_pos = df_main.index.get_loc(start_label_index)
-        end_pos = df_main.index.get_loc(end_label_index)
+        start, end = get_idx(df_main, key_words)
 
-        end_pos = end_pos+3
-        indices_to_drop = df_main.iloc[start_pos:end_pos].index
+        end = end+3
+        indices_to_drop = df_main.iloc[start:end].index
 
         df_main.drop(indices_to_drop, inplace=True)
 
@@ -57,29 +84,6 @@ def convert_julius_bar(df_main, ):
 
 
     df_main.reset_index(inplace=True,drop=True)
-
-
-    def is_comp(val):
-        if not isinstance(val, str):
-            return False
-
-        # 2. Strip whitespace from the string. This is the key change.
-        #    "   Company A   " -> "Company A"
-        #    "       "         -> ""
-        cleaned_val = val.strip()
-
-        # 3. Check if the cleaned string is empty. If it is, it's not a company name.
-        #    This now correctly handles strings that were originally just whitespace.
-        if not cleaned_val:
-            return False
-
-        # 4. Now that we know we have a non-empty, cleaned string, apply the final rules.
-        if cleaned_val.lower() == 'total' or cleaned_val[0].isdigit():
-            return False
-
-        # 5. If it passed all the checks, it's a company name.
-        return True
-
 
 
     mask1 = df_main[0].apply(is_comp)
@@ -108,3 +112,23 @@ def convert_julius_bar(df_main, ):
     df_main.columns = ["Company", "Sell Date", "Quantity", "Sell Rate", "Total Sale Value", "Purchase Date", "Purchase Rate","Actual Cost", "FMV as on 31-01-2018/Indexed Rate", "Applicable Rate", "Effective Cost", "Days Held", "Short Term", "Long Term", "Effective LT"]
 
     df_main.to_excel("")
+
+
+def convert_cams(df_main, fl_name):
+    cams_key = ["Scheme Name", "TOTAL"]
+
+    start_label_index = df_main.index[df_main[0] == cams_key[0]][0]
+    end_label_index = df_main.index[df_main[0] == cams_key[1]][0]
+
+    start, end = get_idx(df_main, cams_key)
+
+    df_main = df_main.iloc[start:end+1,:]
+
+    mask1 = df_main[5].apply(is_comp)
+
+    df_main = df_main[~mask1]
+
+    df_main.columns = ["Scheme Name", "Total Count", "Total Amount", "Total Cost", "Indexed Cost", "Grandfathered Value, Market Value as on 31/01/2018", "Short Term","LongTerm with Indexation", "LongTerm without Indexation", "TDS Amount"]
+
+
+# def convert_icici_prudential(df, fl_name):
