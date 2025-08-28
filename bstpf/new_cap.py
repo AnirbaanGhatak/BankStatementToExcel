@@ -6,21 +6,21 @@ import numpy as np
  
 # Have the User Put in Pages to Process
 
-def get_tables(file):
+def get_tables(file, pgs):
 
     fl_name = file.name
 
-    tables = camelot.read_pdf(file, pages="80-140",flavor='stream')
-
-
-    print(tables[26])
-
+    tables = camelot.read_pdf(file, pgs,flavor='stream')
 
     df_main = pandas.DataFrame()
 
-    for table in tables:
-        df_main = pandas.concat([df_main, table.df], ignore_index=True)
 
+    #create a redundancy like if the size don't match then add extra columns and then concat
+    try: 
+        for table in tables:
+            df_main = pandas.concat([df_main, table.df], ignore_index=True)
+    except Exception as e:
+        print(e)
     ##based on file name decide which function to use
 
 def is_comp(val):
@@ -158,3 +158,6 @@ def convert_icici_prudential(df_main, fl_name):
 
     df_main.to_excel(f"{fl_name}.xlsx")
 
+
+def convert_asset360(df_main, fl_name):
+    
