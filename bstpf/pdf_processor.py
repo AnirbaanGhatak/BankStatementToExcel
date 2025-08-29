@@ -6,8 +6,30 @@ from google import genai
 from google.genai import types
 from PyPDF2 import PdfReader
 from logging_config import log
+import io
 
-def gemini_answer(client, model, prompt, myfile):
+def gemini_answer(client, model, myfile):
+
+    prompt = """
+    Extract all transactions from the provided financial document (statement or passbook) into a raw CSV string.
+
+        **Output Schema & Headers (7 columns, exact order):**
+        `Date,ChequeNo,Narration,ValueDate,WithdrawalAmount,DepositAmount,ClosingBalance`
+
+        **Processing Rules:**
+        - **Combine Multi-line Narration:** Merge multi-line transaction descriptions (like 'Particulars' or 'Narration') into a single field with spaces.
+        - **Handle Missing Columns:** If a source document has no 'ValueDate', keep the column in the header but leave its data fields empty.
+        - **Data Cleaning:** Remove all non-numeric characters from amount columns (e.g., '₹', ',', 'Cr', 'Dr'). `1,234.56 Cr` must become `1234.56`.
+        - **Zero Values:** Represent empty or zero withdrawals/deposits as `0.00`.
+        - **CRITICAL COMMA RULE:** If any field's text contains a comma, enclose that entire field in double quotes. Example: `...,"Transfer, Savings Account",...`
+        - **Exclusions:** Do not include any summary or footer lines (e.g., 'Clear Balance', 'Carried Forward', 'We provide ATM Cards...').
+
+        **Final Output:**
+        - Raw CSV text only.
+        - No explanations, summaries, or markdown ` ``` `.
+        - Start directly with the header row.
+    """
+     
     response = client.models.generate_content(
             model= model,   
             contents=[prompt, myfile],
@@ -19,15 +41,17 @@ def gemini_answer(client, model, prompt, myfile):
     return response
 
 # --- Utility Functions (get_pdf_page_count remains the same) ---
-def get_pdf_page_count(file_path):
+def get_pdf_page_count(file):
     try:
-        with open(file_path, 'rb') as f:
-            reader = PdfReader(f)
-            if reader.is_encrypted:
-                log.warning(f"File '{os.path.basename(file_path)}' is encrypted.")
-            return len(reader.pages)
+        reader = PdfReader(io.BytesIO(file))
+        if reader.is_encrypted:
+            log.warning(f"File '{file.name}' is encrypted.")
+            #send error"
+
+        return len(reader.pages)
     except Exception as e:
-        log.error(f"Could not read PDF file '{os.path.basename(file_path)}'. Error: {e}")
+        log.error(f"Could not read PDF file '{file.name}'. Error: {e}")
+        #streamlit error
         return 0
 
 # --- NEW, ENHANCED VALIDATION FUNCTION ---
@@ -128,50 +152,41 @@ def validate_and_correct_balances(df):
 def process_pdf(processing_file):
     """The main PDF processing function using Gemini API."""
     try:
-        log.info(f"[AI Processor] Starting processing for: {os.path.basename(processing_file.name)}")
+        log.info(f"[AI Processor] Starting processing for: {processing_file.name}")
         
         # ... (Model Selection Logic remains the same) ...
-        page_count = get_pdf_page_count(input_path)
+        page_count = get_pdf_page_count(processing_file)
         if page_count == 0: return "ERROR: Cannot process file with 0 pages or encrypted file."
         models = ["gemini-2.5-flash", "gemini-2.5-flash-lite"]
-        current_idx = 0 if page_count >= 6 else 1
+        current_idx = 0 if page_count >= 12 else 1
         model_to_use = models[current_idx]
 
         log.info(f"[AI Processor] Selected model '{model_to_use}' for {page_count} pages.")
         
         # ... (Gemini API Call Logic remains the same) ...
         client = genai.Client()
-        myfile = client.files.upload(file=input_path)
-        log.info(f"[AI Processor] File '{myfile.name}' uploaded.")
-        prompt = """
-        Extract all transactions from the provided financial document (statement or passbook) into a raw CSV string.
+        # myfile = client.files.upload(file=input_path)
 
-            **Output Schema & Headers (7 columns, exact order):**
-            `Date,ChequeNo,Narration,ValueDate,WithdrawalAmount,DepositAmount,ClosingBalance`
+        doc_io = io.BytesIO(processing_file)
 
-            **Processing Rules:**
-            - **Combine Multi-line Narration:** Merge multi-line transaction descriptions (like 'Particulars' or 'Narration') into a single field with spaces.
-            - **Handle Missing Columns:** If a source document has no 'ValueDate', keep the column in the header but leave its data fields empty.
-            - **Data Cleaning:** Remove all non-numeric characters from amount columns (e.g., '₹', ',', 'Cr', 'Dr'). `1,234.56 Cr` must become `1234.56`.
-            - **Zero Values:** Represent empty or zero withdrawals/deposits as `0.00`.
-            - **CRITICAL COMMA RULE:** If any field's text contains a comma, enclose that entire field in double quotes. Example: `...,"Transfer, Savings Account",...`
-            - **Exclusions:** Do not include any summary or footer lines (e.g., 'Clear Balance', 'Carried Forward', 'We provide ATM Cards...').
+        obj_like_file = client.files.upload(
+            # You can pass a path or a file-like object here
+            file=doc_io,
+            config=dict(mime_type='application/pdf'))
 
-            **Final Output:**
-            - Raw CSV text only.
-            - No explanations, summaries, or markdown ` ``` `.
-            - Start directly with the header row.
-        """
+
+        log.info(f"[AI Processor] File '{processing_file.name}' uploaded.")
+       
         try:
-            response = gemini_answer(client, model_to_use,prompt,myfile)
+            response = gemini_answer(client, model_to_use,obj_like_file)
         except Exception as e:
             log.error(e)
             if '429' or '404' in str(e):
                 model_to_use = models[1 if current_idx == 0 else 0]
-                response = gemini_answer(client, model_to_use,prompt,myfile) 
+                response = gemini_answer(client, model_to_use,obj_like_file) 
 
-        client.files.delete(name=myfile.name)
-        log.info(f"[AI Processor] Deleted uploaded file '{myfile.name}'.")
+        client.files.delete(name=processing_file.name)
+        log.info(f"[AI Processor] Deleted uploaded file '{processing_file.name}'.")
 
         if not response.text:
             return "ERROR: Model returned an empty response."
@@ -212,11 +227,9 @@ def process_pdf(processing_file):
         log.info("[Processor] Balance correction and validation complete.")
 
         # --- Save Output ---
-        validated_df.to_excel(output_path, index=False, engine='openpyxl')
-        log.info(f"[AI Processor] Successfully created Excel file at: {output_path}")
-        
-        return "Success"
+        return validated_df
 
     except Exception as e:
         log.error(f"--- An ERROR occurred in the AI Processor: {e} ---")
-        return f"ERROR: {e}"
+        return pd.DataFrame()
+    

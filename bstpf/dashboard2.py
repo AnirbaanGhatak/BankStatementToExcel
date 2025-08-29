@@ -4,6 +4,7 @@ import json
 from datetime import datetime
 import time
 import pdf_processor
+from io import BytesIO
 
 # --- Configuration ---
 STATUS_FILE = r'C:\Users\DELL\coe\bstpf\processing_status.json'
@@ -19,24 +20,41 @@ st.title("🤖 PDF Converter")
 st.caption(f"This dashboard automatically refreshes. Last check: {datetime.now().strftime('%H:%M:%S')}")
 
 status_placeholder = st.empty()
+processed = st.empty()
 
+download_enable = False
 
-uploaded_file = st.file_uploader(":red-badge[⚠️ ONLY FILES WITHOUT PASSWORDS]", type="pdf", accept_multiple_files=False, key=None, help=None, on_change=None, args=None, kwargs=None, disabled=False, label_visibility="visible", width="stretch")
+def enable_download():
+    global download_enable
+    download_enable = True
 
+uploaded_file = st.file_uploader(":red-badge[⚠️ ONLY FILES WITHOUT PASSWORDS]", type="pdf", accept_multiple_files=False, key=None, help=None, on_change=enable_download, args=None, kwargs=None, disabled=False, label_visibility="visible", width="stretch")
+
+        
 if uploaded_file is not None:
-        #do a file encryption check
-        processing_file = uploaded_file
-        print(f"file uploaded {processing_file.name}")
+    #do a file encryption check
+    processing_file = uploaded_file
+    print(f"file uploaded to local server: {processing_file.name}")
 
-        pdf_processor.process_pdf()
-
-        #https://ai.google.dev/gemini-api/docs/document-processing
-
-        #also set difference and a option box if its manual and not ocr
-        #then manual code else AI ocr
+    processed = pdf_processor.process_pdf(processing_file)
 
 
 
+
+    #https://ai.google.dev/gemini-api/docs/document-processing
+
+    #also set difference and a option box if its manual and not ocr
+    #then manual code else AI ocr
+
+@st.cache_data
+def download_final():
+    excel_buffer = BytesIO()
+    processed.to_excel(excel_buffer, index=False, engine="openpyxl")
+    return processed.to_excel()
+
+data = download_final()    
+        
+st.download_button("Converted Excel to download", data, file_name=None, mime=None, key=None, help=None, disabled=download_enable, width="content")
 
 def display_status():
     """Reads the status file and updates the Streamlit elements."""
