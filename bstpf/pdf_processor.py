@@ -13,7 +13,7 @@ def gemini_answer(client, model, prompt, myfile):
             contents=[prompt, myfile],
             config=types.GenerateContentConfig(
                 temperature= 0.8,
-                thinking_config=types.ThinkingConfig(thinking_budget=512)
+                thinking_config=types.ThinkingConfig(thinking_budget=1024)
             )
         )
     return response
