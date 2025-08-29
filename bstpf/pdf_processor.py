@@ -125,10 +125,10 @@ def validate_and_correct_balances(df):
         return df
 
 # --- Main Processor Function (Using YOUR Parsing Logic) ---
-def process_pdf(input_path, output_path):
+def process_pdf(processing_file):
     """The main PDF processing function using Gemini API."""
     try:
-        log.info(f"[AI Processor] Starting processing for: {os.path.basename(input_path)}")
+        log.info(f"[AI Processor] Starting processing for: {os.path.basename(processing_file.name)}")
         
         # ... (Model Selection Logic remains the same) ...
         page_count = get_pdf_page_count(input_path)
