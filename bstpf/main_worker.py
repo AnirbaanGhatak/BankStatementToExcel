@@ -6,7 +6,7 @@ import json
 from datetime import datetime
 from dotenv import load_dotenv
 from logging_config import log
-import pdf_processor as pdf_processor  # Import our refactored AI engine
+import old_pdf_processor as pdf_processor  # Import our refactored AI engine
 
 
 # --- Configuration ---

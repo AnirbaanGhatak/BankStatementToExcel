@@ -5,7 +5,7 @@ from datetime import datetime
 import time
 import pdf_processor
 from io import BytesIO
-
+import pandas
 # --- Configuration ---
 STATUS_FILE = r'C:\Users\DELL\coe\bstpf\processing_status.json'
 
@@ -20,24 +20,31 @@ st.title("🤖 PDF Converter")
 st.caption(f"This dashboard automatically refreshes. Last check: {datetime.now().strftime('%H:%M:%S')}")
 
 status_placeholder = st.empty()
-processed = st.empty()
 
-download_enable = False
+output = BytesIO()
+download_enable = True
+processed = pandas.DataFrame()
 
-def enable_download():
+def start_processing(uploaded_file):
     global download_enable
-    download_enable = True
+    print("processing")
+    if uploaded_file is not None:
+        #do a file encryption check
+        processing_file = uploaded_file
+        print(f"file uploaded to local server: {processing_file.name}")
 
-uploaded_file = st.file_uploader(":red-badge[⚠️ ONLY FILES WITHOUT PASSWORDS]", type="pdf", accept_multiple_files=False, key=None, help=None, on_change=enable_download, args=None, kwargs=None, disabled=False, label_visibility="visible", width="stretch")
+        ans = pdf_processor.process_pdf(processing_file)
 
-        
-if uploaded_file is not None:
-    #do a file encryption check
-    processing_file = uploaded_file
-    print(f"file uploaded to local server: {processing_file.name}")
+        download_enable = False
 
-    processed = pdf_processor.process_pdf(processing_file)
+        return ans
 
+
+
+uploaded_file = st.file_uploader(":red-badge[⚠️ ONLY FILES WITHOUT PASSWORDS]", type="pdf", accept_multiple_files=False, key=None, help=None, args=None, kwargs=None, disabled=False, label_visibility="visible", width="stretch")
+
+with st.spinner("Wait for it...", show_time=True):
+    processed = start_processing(uploaded_file)
 
 
 
@@ -47,14 +54,15 @@ if uploaded_file is not None:
     #then manual code else AI ocr
 
 @st.cache_data
-def download_final():
+def download_final(df):
     excel_buffer = BytesIO()
-    processed.to_excel(excel_buffer, index=False, engine="openpyxl")
-    return processed.to_excel()
+    writer = pandas.ExcelWriter(excel_buffer, engine="xlsxwriter")
+    df.to_excel(writer, index=False)
+    writer.close()
+    download_file = excel_buffer.getvalue()
+    return download_file
 
-data = download_final()    
-        
-st.download_button("Converted Excel to download", data, file_name=None, mime=None, key=None, help=None, disabled=download_enable, width="content")
+st.download_button("Converted Excel to download", data=, file_name=None, mime=None, key=None, help=None, disabled=True)
 
 def display_status():
     """Reads the status file and updates the Streamlit elements."""
