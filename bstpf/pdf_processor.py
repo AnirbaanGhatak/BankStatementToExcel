@@ -7,6 +7,7 @@ from google.genai import types
 from PyPDF2 import PdfReader
 from logging_config import log
 import io
+from dotenv import load_dotenv
 
 def gemini_answer(client, model, myfile):
 
@@ -46,12 +47,27 @@ def get_pdf_page_count(file):
         reader = PdfReader(io.BytesIO(file))
         if reader.is_encrypted:
             log.warning(f"File '{file.name}' is encrypted.")
-            #send error"
-
-        return len(reader.pages)
+            
+            try:
+                reader.decrypt("")
+            except Exception:
+                pass
+            
+            page_count = len(reader.pages)
+            
+            
+            if page_count == 0:
+                log.warning("Zero Pages")
+                return 0
+            
+            log.info("PDF is Accessible")
+            return page_count
+        
+    except FileExistsError:
+        log.error("Couldn't read a PDF Password Required")
+        return 0
     except Exception as e:
-        log.error(f"Could not read PDF file '{file.name}'. Error: {e}")
-        #streamlit error
+        log.error(f"Could not read PDF structure (may be corrupt or password-protected). Error: {e}")
         return 0
 
 # --- NEW, ENHANCED VALIDATION FUNCTION ---
@@ -150,45 +166,66 @@ def validate_and_correct_balances(df):
 
 # --- Main Processor Function (Using YOUR Parsing Logic) ---
 def process_pdf(processing_file):
+    load_dotenv()
+
     """The main PDF processing function using Gemini API."""
     try:
         log.info(f"[AI Processor] Starting processing for: {processing_file.name}")
         
         # ... (Model Selection Logic remains the same) ...
-        page_count = get_pdf_page_count(processing_file)
+        
+        print("9")
+        
+        required_file = processing_file.getvalue()
+        page_count = get_pdf_page_count(required_file)
         if page_count == 0: return "ERROR: Cannot process file with 0 pages or encrypted file."
         models = ["gemini-2.5-flash", "gemini-2.5-flash-lite"]
         current_idx = 0 if page_count >= 12 else 1
         model_to_use = models[current_idx]
+        
+        print("10")
 
         log.info(f"[AI Processor] Selected model '{model_to_use}' for {page_count} pages.")
         
+        print("hell0")
         # ... (Gemini API Call Logic remains the same) ...
-        client = genai.Client()
+        
+        try:
+            client = genai.Client()
         # myfile = client.files.upload(file=input_path)
-
-        doc_io = io.BytesIO(processing_file)
-
-        obj_like_file = client.files.upload(
-            # You can pass a path or a file-like object here
-            file=doc_io,
-            config=dict(mime_type='application/pdf'))
-
+        except Exception as e:
+            print(f"{e}")
+        print("11")
+        
+        try:
+            doc_io = io.BytesIO(required_file)
+            obj_like_file = client.files.upload(
+                # You can pass a path or a file-like object here
+                file=doc_io,
+                config=dict(mime_type='application/pdf'))
+        except Exception as e:
+            print(f"{e}")
 
         log.info(f"[AI Processor] File '{processing_file.name}' uploaded.")
+        print("13")
        
         try:
             response = gemini_answer(client, model_to_use,obj_like_file)
+            print("14")
         except Exception as e:
             log.error(e)
-            if '429' or '404' in str(e):
+            print("16")
+            if '429' in str(e) or '404' in str(e):
                 model_to_use = models[1 if current_idx == 0 else 0]
                 response = gemini_answer(client, model_to_use,obj_like_file) 
 
         client.files.delete(name=processing_file.name)
         log.info(f"[AI Processor] Deleted uploaded file '{processing_file.name}'.")
+        
+        print("15")
 
         if not response.text:
+            print("16")
             return "ERROR: Model returned an empty response."
         
         # --- YOUR ROBUST PARSING LOGIC ---
