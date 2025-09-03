@@ -36,7 +36,7 @@ def gemini_answer(client, model, myfile):
             contents=[prompt, myfile],
             config=types.GenerateContentConfig(
                 temperature= 0.8,
-                thinking_config=types.ThinkingConfig(thinking_budget=1024)
+                thinking_config=types.ThinkingConfig(thinking_budget=-1)
             )
         )
     return response
@@ -46,7 +46,7 @@ def get_pdf_page_count(file):
     try:
         reader = PdfReader(io.BytesIO(file))
         if reader.is_encrypted:
-            log.warning(f"File '{file.name}' is encrypted.")
+            print(f"File '{file.name}' is encrypted.")
             
             try:
                 reader.decrypt("")
@@ -57,17 +57,20 @@ def get_pdf_page_count(file):
             
             
             if page_count == 0:
-                log.warning("Zero Pages")
+                print("Zero Pages")
                 return 0
             
-            log.info("PDF is Accessible")
+            print("PDF is Accessible")
+            return page_count
+        else:
+            page_count = len(reader.pages)
             return page_count
         
     except FileExistsError:
-        log.error("Couldn't read a PDF Password Required")
+        print("Couldn't read a PDF Password Required")
         return 0
     except Exception as e:
-        log.error(f"Could not read PDF structure (may be corrupt or password-protected). Error: {e}")
+        print(f"Could not read PDF structure (may be corrupt or password-protected). Error: {e}")
         return 0
 
 # --- NEW, ENHANCED VALIDATION FUNCTION ---
@@ -170,14 +173,16 @@ def process_pdf(processing_file):
 
     """The main PDF processing function using Gemini API."""
     try:
-        log.info(f"[AI Processor] Starting processing for: {processing_file.name}")
+        print(f"[AI Processor] Starting processing for: {processing_file.name}")
         
         # ... (Model Selection Logic remains the same) ...
         
         print("9")
         
         required_file = processing_file.getvalue()
+        print("getValue")
         page_count = get_pdf_page_count(required_file)
+        print(f"getPageCount{page_count}")
         if page_count == 0: return "ERROR: Cannot process file with 0 pages or encrypted file."
         models = ["gemini-2.5-flash", "gemini-2.5-flash-lite"]
         current_idx = 0 if page_count >= 12 else 1
@@ -219,8 +224,9 @@ def process_pdf(processing_file):
                 model_to_use = models[1 if current_idx == 0 else 0]
                 response = gemini_answer(client, model_to_use,obj_like_file) 
 
-        client.files.delete(name=processing_file.name)
-        log.info(f"[AI Processor] Deleted uploaded file '{processing_file.name}'.")
+        print("pre-15")
+        client.files.delete(name=obj_like_file.name)
+        print(f"[AI Processor] Deleted uploaded file '{processing_file.name}'.")
         
         print("15")
 
@@ -229,7 +235,10 @@ def process_pdf(processing_file):
             return "ERROR: Model returned an empty response."
         
         # --- YOUR ROBUST PARSING LOGIC ---
+        
+        print(response.text)
         doc = io.StringIO(response.text)
+        print("working")
         col_names = [f"col_{i}" for i in range(10)] # Read up to 10 potential columns
         df = pd.read_csv(doc, header=None, names=col_names, sep=",", engine="python", on_bad_lines='skip')
         
