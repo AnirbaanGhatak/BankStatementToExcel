@@ -4,7 +4,7 @@ import pathlib
 import pandas as pd
 from google import genai
 from google.genai import types
-from PyPDF2 import PdfReader
+from pypdf import PdfReader
 from logging_config import log
 import io
 from dotenv import load_dotenv
@@ -46,12 +46,13 @@ def get_pdf_page_count(file):
     try:
         reader = PdfReader(io.BytesIO(file))
         if reader.is_encrypted:
-            print(f"File '{file.name}' is encrypted.")
+            print(f"File is encrypted. Attempting blank password")
             
-            try:
-                reader.decrypt("")
-            except Exception:
-                pass
+            if reader.decrypt("") == 0:  
+                print(f"Could not decrypt with a blank password. It likely requires a real password.")             
+                return 0
+            
+            print(f"Successfully decrypted'.")
             
             page_count = len(reader.pages)
             
@@ -241,6 +242,7 @@ def process_pdf(processing_file):
         print("working")
         col_names = [f"col_{i}" for i in range(10)] # Read up to 10 potential columns
         df = pd.read_csv(doc, header=None, names=col_names, sep=",", engine="python", on_bad_lines='skip')
+        print(df.head())
         
         # Dynamically assign column headers from the first row of data
         header_list = df.iloc[0, :len(df.columns)].fillna('Unnamed').tolist()
