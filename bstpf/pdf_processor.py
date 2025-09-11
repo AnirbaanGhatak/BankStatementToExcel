@@ -5,7 +5,6 @@ import pandas as pd
 from google import genai
 from google.genai import types
 from pypdf import PdfReader
-from logging_config import log
 import io
 from dotenv import load_dotenv
 
@@ -29,6 +28,8 @@ def gemini_answer(client, model, myfile):
         - Raw CSV text only.
         - No explanations, summaries, or markdown ` ``` `.
         - Start directly with the header row.
+        - Strictly Adhere to the Instructions above
+
     """
      
     response = client.models.generate_content(
@@ -81,29 +82,29 @@ def validate_and_correct_balances(df):
     shifted columns, and annotates the DataFrame with a detailed validation status for each row.
 
     Args:
-        df (pd.DataFrame): The raw DataFrame produced by the initial parsing logic.
+        df (pd.DataFrame): The raw DataFrame produced by the initial parsing printic.
 
     Returns:
         pd.DataFrame: The corrected and annotated DataFrame, ready for export.
     """
-    log.info("[Validator] Starting balance validation and correction.")
+    print("[Validator] Starting balance validation and correction.")
     try:
         if df.empty:
-            log.warning("[Validator] Input DataFrame is empty. Skipping validation.")
+            print("[Validator] Input DataFrame is empty. Skipping validation.")
             df['Validation Status'] = 'DataFrame is empty'
             return df
             
         check_df = df.copy()
 
         # --- Step 1: Column Shift Correction ---
-        # This logic fixes cases where the ClosingBalance value was placed in the next column over.
+        # This printic fixes cases where the ClosingBalance value was placed in the next column over.
         if 'ClosingBalance' in check_df.columns:
             closing_balance_col_index = check_df.columns.get_loc('ClosingBalance')
             
             # Check if there's at least one column after 'ClosingBalance'
             if closing_balance_col_index + 1 < len(check_df.columns):
                 next_col_name = check_df.columns[closing_balance_col_index + 1]
-                log.info(f"[Validator] Checking for shifted values from '{next_col_name}' to 'ClosingBalance'.")
+                print(f"[Validator] Checking for shifted values from '{next_col_name}' to 'ClosingBalance'.")
                 
                 # Identify rows where the shift needs to happen
                 # Condition: ClosingBalance is null/empty AND the next column has a value.
@@ -113,7 +114,7 @@ def validate_and_correct_balances(df):
                     # Apply the shift in a single, efficient operation
                     check_df.loc[shift_condition, 'ClosingBalance'] = check_df.loc[shift_condition, next_col_name]
                     check_df.loc[shift_condition, next_col_name] = None # Clear the old value
-                    log.info(f"  > Corrected {shift_condition.sum()} shifted balance value(s).")
+                    print(f"  > Corrected {shift_condition.sum()} shifted balance value(s).")
 
         # --- Step 2: Data Cleaning and Type Conversion ---
         # This is done *after* the correction to ensure we're working with the right data.
@@ -125,7 +126,7 @@ def validate_and_correct_balances(df):
         check_df['Validation Status'] = 'OK'
         
         # --- Step 4: Resilient Row-by-Row Validation Loop ---
-        log.info("[Validator] Performing row-by-row balance calculation.")
+        print("[Validator] Performing row-by-row balance calculation.")
         for i in range(1, len(check_df)):
             # Get values for the current and previous row
             previous_balance = check_df.loc[i-1, 'ClosingBalance']
@@ -154,21 +155,21 @@ def validate_and_correct_balances(df):
         if not check_df.empty and pd.isna(check_df.loc[0, 'ClosingBalance']):
             check_df.loc[0, 'Validation Status'] = 'Error: Opening Balance is missing or invalid'
 
-        log.info("[Validator] Validation complete.")
+        print("[Validator] Validation complete.")
         return check_df
 
     except KeyError as e:
         error_msg = f"Critical Error: A required column was not found in the DataFrame -> {e}"
-        log.error(f"[Validator] {error_msg}")
+        print(f"[Validator] {error_msg}")
         df['Validation Status'] = error_msg
         return df
     except Exception as e:
         error_msg = f"An unexpected critical error occurred during validation: {e}"
-        log.error(f"[Validator] {error_msg}")
+        print(f"[Validator] {error_msg}")
         df['Validation Status'] = error_msg
         return df
 
-# --- Main Processor Function (Using YOUR Parsing Logic) ---
+# --- Main Processor Function (Using YOUR Parsing printic) ---
 def process_pdf(processing_file):
     load_dotenv()
 
@@ -176,7 +177,7 @@ def process_pdf(processing_file):
     try:
         print(f"[AI Processor] Starting processing for: {processing_file.name}")
         
-        # ... (Model Selection Logic remains the same) ...
+        # ... (Model Selection printic remains the same) ...
         
         print("9")
         
@@ -186,15 +187,15 @@ def process_pdf(processing_file):
         print(f"getPageCount{page_count}")
         if page_count == 0: return "ERROR: Cannot process file with 0 pages or encrypted file."
         models = ["gemini-2.5-flash", "gemini-2.5-flash-lite"]
-        current_idx = 0 if page_count >= 12 else 1
+        current_idx = 0 if page_count >= 10 else 1
         model_to_use = models[current_idx]
         
         print("10")
 
-        log.info(f"[AI Processor] Selected model '{model_to_use}' for {page_count} pages.")
+        print(f"[AI Processor] Selected model '{model_to_use}' for {page_count} pages.")
         
         print("hell0")
-        # ... (Gemini API Call Logic remains the same) ...
+        # ... (Gemini API Call printic remains the same) ...
         
         try:
             client = genai.Client()
@@ -212,14 +213,14 @@ def process_pdf(processing_file):
         except Exception as e:
             print(f"{e}")
 
-        log.info(f"[AI Processor] File '{processing_file.name}' uploaded.")
+        print(f"[AI Processor] File '{processing_file.name}' uploaded.")
         print("13")
        
         try:
             response = gemini_answer(client, model_to_use,obj_like_file)
             print("14")
         except Exception as e:
-            log.error(e)
+            print(e)
             print("16")
             if '429' in str(e) or '404' in str(e):
                 model_to_use = models[1 if current_idx == 0 else 0]
@@ -235,7 +236,7 @@ def process_pdf(processing_file):
             print("16")
             return "ERROR: Model returned an empty response."
         
-        # --- YOUR ROBUST PARSING LOGIC ---
+        # --- YOUR ROBUST PARSING printIC ---
         
         print(response.text)
         doc = io.StringIO(response.text)
@@ -260,7 +261,7 @@ def process_pdf(processing_file):
         df.columns = new_columns
         
         df = df.iloc[1:].reset_index(drop=True)
-        log.info(f"[Parser] Successfully parsed AI response into a DataFrame with {len(df.columns)} initial columns.")
+        print(f"[Parser] Successfully parsed AI response into a DataFrame with {len(df.columns)} initial columns.")
         
         # --- Sort the DataFrame by Date ---
         df['Date'] = pd.to_datetime(df['Date'], errors='coerce', dayfirst=True)
@@ -268,16 +269,16 @@ def process_pdf(processing_file):
         df.sort_values(by='Date', inplace=True, kind='mergesort')
         df['Date'] = df['Date'].dt.strftime('%d/%m/%y')
         df.reset_index(drop=True, inplace=True)
-        log.info("[Processor] DataFrame sorted by date.")
+        print("[Processor] DataFrame sorted by date.")
         
         # --- CALL THE NEW, ENHANCED VALIDATION FUNCTION ---
         validated_df = validate_and_correct_balances(df)
-        log.info("[Processor] Balance correction and validation complete.")
+        print("[Processor] Balance correction and validation complete.")
 
         # --- Save Output ---
         return validated_df
 
     except Exception as e:
-        log.error(f"--- An ERROR occurred in the AI Processor: {e} ---")
+        print(f"--- An ERROR occurred in the AI Processor: {e} ---")
         return pd.DataFrame()
     
