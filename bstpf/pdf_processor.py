@@ -187,7 +187,7 @@ def process_pdf(processing_file):
         print(f"getPageCount{page_count}")
         if page_count == 0: return "ERROR: Cannot process file with 0 pages or encrypted file."
         models = ["gemini-2.5-flash", "gemini-2.5-flash-lite"]
-        current_idx = 0 if page_count >= 10 else 1
+        current_idx = 0 if page_count > 14 else 1
         model_to_use = models[current_idx]
         
         print("10")
